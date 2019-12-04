@@ -29,7 +29,7 @@
 
 ---
 ## Neurons
-### How does it work?
+### How do they work?
 
 <ul>
 <div align="left">
@@ -62,15 +62,18 @@
 <center><img src="artificial_neuron.jpeg" width="800px"/></center>
 
 ---
+{{<slide background-image="neurons.png">}}
+## Neural Networks
+
+---
 ## Neural Networks
 * It appears that one reason why the human brain is <em>so powerful</em> is the
 sheer complexity of connections between neurons;
 * The brain exhibits <em>huge degree of parallelism</em>;
-<center><img src="neurons.png" width="600px"/></center>
 
 ---
 
-## Neural Networks
+## Artificial Neural Networks
 * Model each part of the neuron and interactions;
 * <em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based
 on the synaptic strength at that synapse (e.g. $w_0$ ); 
@@ -78,7 +81,7 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
 
 ---
 
-## Neural Networks
+## Artificial Neural Networks
 ### Function Approximation Machines
 * Datasets as composite functions: $y=f^{*}(x)$
   * Maps $x$ input to a category (or a value) $y$;
@@ -97,13 +100,53 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
   * Transmitted to other units along the arcs of the directed graph;
 
 ---
+## Artificial Neural Networks
+* <em>Input</em>, <em>Output</em>, and <em>Hidden</em> layers;
+* Hidden as in "not defined by the output";
+<center><img src="nn1.png" height="200px" style="margin-top:50px;"/></center>
 
+---
+## Artificial Neural Networks
+##### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+* 
+
+
+---
+## Artificial Neural Networks
+### Neurons
+* Activation Function
+  * Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;
+* <em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;
+* Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;
+  * Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off)
+
+---
+## Artificial Neural Networks
+### The Bias
+<center><img src="bias1.png" width="600px"/></center>
+
+---
+## Artificial Neural Networks
+### The Bias
+<center><img src="bias2.png" width="600px"/></center>
+
+---
+## Artificial Neural Networks
+### The Bias
+<center><img src="neuron3.png" width="650px"/></center>
+
+---
+
+## Artificial Neural Networks
+### The Bias
+<center><img src="neuron4.png" width="650px"/></center>
+
+---
 ## Try to train it manually:
 
 <iframe src="manual_NN1.html" height="500px" width="800px">
 </iframe>
 
-###### Widget taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>
 
 
 
