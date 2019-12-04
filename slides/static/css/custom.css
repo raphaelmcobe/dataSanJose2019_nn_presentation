@@ -1,0 +1,20 @@
+.custom em{
+    color: #a32843;
+}
+
+em{
+    color: #ED3862;
+    font-style: normal !important;
+}
+
+.MathJax {
+    color: #20A39E;
+}
+
+.custom code{
+    color: #ff2f86;
+}
+
+.customjs {
+    background-color: #504e9e;
+}
