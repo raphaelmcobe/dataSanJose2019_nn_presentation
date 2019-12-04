@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.59.1" />
+    <meta charset="utf-8">
+<title>reveal-hugo</title>
+<meta name="description" content="A Hugo theme for creating Reveal.js presentations">
+<meta name="author" content="Josh Dzielak">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/reveal-js/css/reset.css">
+<link rel="stylesheet" href="/reveal-js/css/reveal.css">
+  <link rel="stylesheet" href="/_.min.338c2dbcdc88444722ee17f35ec70f9e63a5a18cf223c63078fad2595282c480.css" id="theme"><link rel="stylesheet" href="/highlight-js/mono-blue.min.css"><link rel="stylesheet" href="/css/custom.css" id="custom_css">
+    
+
+<style>
+ 
+.reveal section pre {
+  box-shadow: none;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 1px solid lightgrey;
+}
+.reveal section pre:hover {
+  border: 1px solid grey;
+  transition: border 0.3s ease;
+}
+.reveal section pre > code {
+  padding: 10px;
+}
+.reveal table {
+  font-size: 0.65em;
+}
+ 
+.reveal section.side-by-side h1 {
+  position: absolute;
+}
+.reveal section.side-by-side h1:first-of-type {
+  left: 25%;
+}
+.reveal section.side-by-side h1:nth-of-type(2) {
+  right: 25%;
+}
+.reveal section[data-background-image] a,
+.reveal section[data-background-image] p,
+.reveal section[data-background-image] h2 {
+  color: white;
+}
+.reveal section[data-background-image] a {
+  text-decoration: underline;
+}
+
+</style>
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+
+  MathJax.Hub.Config({
+  
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+  });
+</script>
+
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+  
+
+    <section>
+
+<h1 id="introduction-to-neural-networks">Introduction to Neural Networks</h1>
+
+<p>~ by <a href="mailto:cobe@advancedinstitute.ai">@raphaelmcobe</a> ~</p>
+</section>
+
+  
+
+    <section>
+
+<h2 id="neural-networks">Neural Networks</h2>
+
+<ul>
+<li>Neurons as structural constituents of the brain [Ramón y Cajál, 1911];</li>
+<li>Five to six orders of magnitude slower than silicon logic gates;</li>
+<li>In a silicon chip happen in the nanosecond on chip) vs millisecond range (neural events);</li>
+<li>A truly staggering number of neurons (nerve cells) with massive interconnections between them;</li>
+</ul>
+
+</section><section>
+
+<h2 id="neural-networks-1">Neural Networks</h2>
+
+<ul>
+<li>Receive input from other units and decides whether or not to fire;</li>
+<li>Approximately 10 billion neurons in the human cortex, and 60 trillion synapses or connections [Shepherd and Koch, 1990];</li>
+<li>Energy efficiency of the brain is approximately $10^{−16}$ joules per operation per second against ~ $10^{−8}$ in a computer;</li>
+</ul>
+
+</section>
+
+
+<section data-noprocess data-shortcode-slide
+      data-background-image="neuron2.png">
+  
+
+<h2 id="neurons">Neurons</h2>
+
+</section><section>
+
+<h2 id="neurons-1">Neurons</h2>
+
+<ul>
+<li>input signals from its <em>dendrites</em>;</li>
+<li>output signals along its (single) <em>axon</em>;</li>
+</ul>
+
+<p><img src="neuron1.png"/></p>
+
+</section><section>
+
+<h2 id="neurons-2">Neurons</h2>
+
+<h3 id="how-does-it-work">How does it work?</h3>
+
+<ul>
+<div align="left">
+<span class='fragment '
+  >
+   <li>Control the influence from one neuron on another:</li> 
+</span>
+</div>
+
+<ul>
+<div align="left">
+<span class='fragment '
+  >
+   <li><em>Excitatory</em> when weight is positive; or</li> 
+</span>
+</div>
+
+<div align="left">
+<span class='fragment '
+  >
+   <li><em>Inhibitory</em> when weight is negative;</li> 
+</span>
+</div>
+</ul>
+
+<div align="left">
+<span class='fragment '
+  >
+   <li>Nucleus is responsible for summing the incoming signals;</li> 
+</span>
+</div>
+
+<p><div align="left">
+<span class='fragment '
+  >
+   <li><strong>If the sum is above some threshold, then <em>fire!</em></strong></li>
+</span>
+</div>
+</ul></p>
+
+</section><section>
+
+<h2 id="neurons-3">Neurons</h2>
+
+<h3 id="artificial-neuron">Artificial Neuron</h3>
+
+<p><center><img src="artificial_neuron.jpeg" width="800px"/></center></p>
+
+</section><section>
+
+<h2 id="neural-networks-2">Neural Networks</h2>
+
+<ul>
+<li>It appears that one reason why the human brain is <em>so powerful</em> is the
+sheer complexity of connections between neurons;</li>
+<li>The brain exhibits <em>huge degree of parallelism</em>;
+<center><img src="neurons.png" width="600px"/></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="neural-networks-3">Neural Networks</h2>
+
+<ul>
+<li>Model each part of the neuron and interactions;</li>
+<li><em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based
+on the synaptic strength at that synapse (e.g. $w_0$ );</li>
+<li>Learn <em>synapses strengths</em>;</li>
+</ul>
+
+</section><section>
+
+<h2 id="neural-networks-4">Neural Networks</h2>
+
+<h3 id="function-approximation-machines">Function Approximation Machines</h3>
+
+<ul>
+<li>Datasets as composite functions: $y=f^{*}(x)$
+
+<ul>
+<li>Maps $x$ input to a category (or a value) $y$;</li>
+</ul></li>
+<li>Learn synapses weights and aproximate $y$ with $\hat{y}$:
+
+<ul>
+<li>$\hat{y} = f(x;w)$</li>
+<li>Learn the $w$ parameters;</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks">Artificial Neural Networks</h2>
+
+<ul>
+<li>Can be seen as a directed graph with units (or neurons) situated at the vertices;
+
+<ul>
+<li>Some are <em>input units</em></li>
+</ul></li>
+<li>Receive signal from the outside world;</li>
+<li>The remaining are named <em>computation units</em>;</li>
+<li>Each unit <em>produces an output</em>
+
+<ul>
+<li>Transmitted to other units along the arcs of the directed graph;</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="try-to-train-it-manually">Try to train it manually:</h2>
+
+<iframe src="manual_NN1.html" height="500px" width="800px">
+</iframe>
+
+<h6 id="widget-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a">Widget taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a></h6>
+</section>
+
+</div>
+      
+<div class="line top"></div>
+<div class="line bottom"></div>
+<div class="line left"></div>
+<div class="line right"></div>
+
+    </div>
+<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+
+<a href="/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<script type="text/javascript">
+  var printLocationElement = document.getElementById('print-location');
+  var link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = printLocationElement.href + (window.location.search.match(/print-pdf/gi) ? 'pdf.css' : 'paper.css');
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
+<script type="application/json" id="reveal-hugo-site-params">{"history":true,"templates":{"grey":{"background":"#424242","transition":"convex"}}}</script>
+<script type="application/json" id="reveal-hugo-page-params">{"custom_css":"css/custom.css","custom_theme":"custom-theme.scss","custom_theme_compile":true,"highlight_theme":"mono-blue","transition":"slide","transition_speed":"fast"}</script>
+
+<script src="/reveal-js/js/reveal.js"></script>
+
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+  
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = JSON.parse(document.getElementById('reveal-hugo-site-params').innerHTML);
+  var revealHugoPageParams = JSON.parse(document.getElementById('reveal-hugo-page-params').innerHTML);
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams));
+  Reveal.initialize(options);
+</script>
+
+
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/marked.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/reveal-js/plugin/zoom-js/zoom.js"></script>
+  
+  
+  <script type="text/javascript" src="/reveal-js/plugin/notes/notes.js"></script>
+
+
+
+    
+    <style>
+  #logo {
+    position: absolute;
+    top: 30px;
+    right: 30px;	  
+    width: 100px;
+  }
+</style>
+<img id="logo" src="ai2_logo.png" alt="Advanced Institute for Artificial Intelligence">
+
+  </body>
+</html>
