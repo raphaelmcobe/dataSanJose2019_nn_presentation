@@ -797,40 +797,40 @@ NN_trainer.prototype.updateNeuralNetworkGraph = function(){
 
 
 
-var trainer = new NN_trainer("#training-one-chart",  "#training-one",
-    [2104, 1600, 2400], // areas
-    [399.900, 329.900, 369.000], // prices
-    0.1,    // initial weight
-    0,    // initial bias
-    0,      // x1
-    0,      // y1
-    3000,   // x2
-    610,    //y2
-    "", "", "", "", false, "", "", "", "", "#neural-network-graph",
-    "Basics of Neural Networks - Viz 1 weight & bias");
-
-
-
-//var trainer2 = new NN_trainer("#training-one-gd-chart",  "#training-one-gd",
-//    [2104, 1600, 2400],
-//    [399.900, 329.900, 369.000],
-//    0,      // initial weight
-//    0,      // initial bias
+//var trainer = new NN_trainer("#training-one-chart",  "#training-one",
+//    [2104, 1600, 2400], // areas
+//    [399.900, 329.900, 369.000], // prices
+//    0.1,    // initial weight
+//    0,    // initial bias
 //    0,      // x1
 //    0,      // y1
-//    2600,   // x2
-//    410,    //y2
-//    "#gradient-descent-button",
-//    "#gradient-descent-10-button",
-//    "#gradient-descent-100-button",
-//    "#gradient-descent-converge-button",
-//    false,
-//    "#training-one-gd-error-chart",
-//    "#training-one-gd-heatmap",
-//    [0, 0.4],
-//    [0, 460],
-//    "#neural-network-gd-graph",
-//    "Basics of Neural Networks - Viz 2 gradient descent"
-//);
+//    3000,   // x2
+//    610,    //y2
+//    "", "", "", "", false, "", "", "", "", "#neural-network-graph",
+//    "Basics of Neural Networks - Viz 1 weight & bias");
+
+
+
+var trainer2 = new NN_trainer("#training-one-gd-chart",  "#training-one-gd",
+    [2104, 1600, 2400],
+    [399.900, 329.900, 369.000],
+    0,      // initial weight
+    0,      // initial bias
+    0,      // x1
+    0,      // y1
+    2600,   // x2
+    410,    //y2
+    "#gradient-descent-button",
+    "#gradient-descent-10-button",
+    "#gradient-descent-100-button",
+    "#gradient-descent-converge-button",
+    false,
+    "#training-one-gd-error-chart",
+    "#training-one-gd-heatmap",
+    [0, 0.4],
+    [0, 460],
+    "#neural-network-gd-graph",
+    "Basics of Neural Networks - Viz 2 gradient descent"
+);
 
 

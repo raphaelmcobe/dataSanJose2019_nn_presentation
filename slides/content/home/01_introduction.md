@@ -107,9 +107,135 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
 
 ---
 ## Artificial Neural Networks
-##### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
-* 
+###### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+* Imagine that you want to forecast the price of houses at your neighborhood;
+  * After some research you found that 3 people sold houses for the following values:
 
+<br />
+
+Area (sq ft) (x)|	Price (y)
+----------------|----------
+2,104	          |  $399,900$
+1,600	          |  $329,900$
+2,400	          |  $369,000$
+
+---
+## Artificial Neural Networks
+###### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+
+{{% fragment %}} If you want to sell a 2K sq ft house, how much should ask for it? {{% /fragment %}}
+<br /><br />
+{{% fragment %}} How about finding the <em>average price per square feet</em>?{{% /fragment %}}
+<br /><br />
+{{% fragment %}} <em>$\$180$ per sq ft.</em> {{% /fragment %}}
+
+
+---
+## Artificial Neural Networks
+###### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+* Our very first neural network looks like this:
+{{% fragment %}}<center><img src="nn2.png" width="600px"/></center> {{% /fragment %}}
+
+---
+## Artificial Neural Networks
+###### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+* Multiplying $2,000$ sq ft by $180$ gives us $\$360,000$. 
+* Calculating the prediction is simple multiplication. 
+* <strong><em>We needed to think about the weight we’ll be multiplying by.</em></strong>
+* That is what training means!
+
+<br />
+
+Area (sq ft) (x)|	Price (y)    | Estimated Price($\hat{y}$)
+----------------|--------------|---------------------------
+2,104	          |  $\$399,900$ |          $\$378,720$
+1,600	          |  $\$329,900$ |          $\$288,000$
+2,400	          |  $\$369,000$ |          $\$432,000$
+
+---
+## Artificial Neural Networks
+###### Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>) 
+* How bad is our model?
+	* Calculate the <em>Error</em>;
+	* A better model is one that has less error; 
+
+{{% fragment %}} <em>Mean Square Error</em>{{% /fragment %}}{{% fragment %}}: $2,058$ {{% /fragment %}}
+
+<br />
+
+Area (sq ft) (x)|	Price (y)    | Estimated Price($\hat{y}$) | $y-\hat{y}$ | $(y-\hat{y})^2$
+----------------|--------------|----------------------------|-------------|---------------
+2,104	          |  $\$399,900$ |          $\$378,720$       | $\$21$      |  $449$
+1,600	          |  $\$329,900$ |          $\$288,000$       | $\$42$      |  $1756$
+2,400	          |  $\$369,000$ |          $\$432,000$       | $\$-63$     |  $3969$
+
+---
+## Artificial Neural Networks
+* Fitting the line to our data:
+
+<center><img src="manual_training1.gif" width="450px"/></center>
+
+Follows the equation: $\hat{y} = W * x$
+
+---
+## Artificial Neural Networks
+
+How about addind the <em>Intercept</em>?
+
+{{% fragment %}} $\hat{y}=Wx + b$ {{% /fragment %}}
+
+---
+## Artificial Neural Networks
+### The Bias
+
+<center><img src="nn3.png" width="500px"/></center>
+
+---
+## Artificial Neural Networks
+### Try to train it manually:
+
+<iframe src="manual_NN1.html" height="500px" width="800px">
+</iframe>
+
+---
+## Artificial Neural Networks
+### How to discover the correct weights?
+* Gradient Descent:
+  * Finding the <em>minimum of a function</em>;
+    * Look for the best weights values, <em>minimizing the error</em>;
+  * Takes steps proportional to the negative of the gradient of the function at the current point.
+  * Gradient is a vector that is tangent of a function and points in the direction of greatest increase of this function. 
+
+---
+## Artificial Neural Networks
+### Gradient Descent
+* In mathematics, gradient is defined as partial derivative for every input variable of function;
+* Negative gradient is a vector pointing at the greatest decrease of a function;
+* Minimize a function by iteratively moving a little bit in the direction of negative gradient;
+
+---
+## Artificial Neural Networks
+### Gradient Descent
+* With a single weight: 
+
+<center><img src="gd1.jpeg" width="500px"/></center>
+
+
+---
+## Artificial Neural Networks
+### Gradient Descent
+
+<iframe src="manual_NN2.html" height="500px" width="800px">
+</iframe>
+
+
+---
+## Artificial Neural Networks
+### Perceptron
+* In 1958, Frank Rosenblatt proposed an algorithm for training the perceptron.
+* Simplest form of Neural Network;
+* One unique neuron;
+* Adjustable Synaptic weights
 
 ---
 ## Artificial Neural Networks
@@ -123,16 +249,6 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
 ---
 ## Artificial Neural Networks
 ### The Bias
-<center><img src="bias1.png" width="600px"/></center>
-
----
-## Artificial Neural Networks
-### The Bias
-<center><img src="bias2.png" width="600px"/></center>
-
----
-## Artificial Neural Networks
-### The Bias
 <center><img src="neuron3.png" width="650px"/></center>
 
 ---
@@ -142,11 +258,14 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
 <center><img src="neuron4.png" width="650px"/></center>
 
 ---
-## Try to train it manually:
+## Artificial Neural Networks
+### The Bias
+<center><img src="bias1.png" width="600px"/></center>
 
-<iframe src="manual_NN1.html" height="500px" width="800px">
-</iframe>
-
+---
+## Artificial Neural Networks
+### The Bias
+<center><img src="bias2.png" width="600px"/></center>
 
 
 
