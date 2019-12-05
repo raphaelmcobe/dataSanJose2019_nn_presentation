@@ -239,6 +239,46 @@ How about addind the <em>Intercept</em>?
 
 ---
 ## Artificial Neural Networks
+### Perceptron
+* Classification of observations into two classes:
+<center><img src="perceptron1.png" height="350px"/></center>
+
+###### Images Taken from <a href="https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975" target="_blank">Towards Data Science</a> 
+
+---
+## Artificial Neural Networks
+### Perceptron
+* Classification of observations into two classes:
+<center><img src="perceptron2.png" height="350px"/></center>
+
+###### Images Taken from <a href="https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975" target="_blank">Towards Data Science</a> 
+
+---
+## Artificial Neural Networks
+### Perceptron
+* E.g, the OR function:
+
+<center><img src="or1.png" width="550px"/></center>
+
+#### Find the $w_i$ values that could solve the or problem. 
+
+---
+## Artificial Neural Networks
+### Perceptron
+* E.g, the OR function:
+
+<br />
+<center><img src="or2.png" width="550px"/></center>
+
+---
+## Artificial Neural Networks
+### Perceptron
+* One possible solution $w_0=-1$, $w_1=1.1$, $w_2=1.1$:
+
+<center><img src="or3.png" width="450px"/></center>
+
+---
+## Artificial Neural Networks
 ### Neurons
 * Activation Function
   * Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;
