@@ -372,6 +372,15 @@ $x_1$|$x_2$|$y$
 
 ---
 ## Artificial Neural Networks
+### Perceptron - What it <em>can't do</em>!
+
+* The <em>XOR</em> function:
+
+<center><img src="xor1.png" width="650px"/></center>
+
+
+---
+## Artificial Neural Networks
 ### Neurons
 * Activation Function
   * Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;
