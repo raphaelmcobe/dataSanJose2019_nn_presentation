@@ -5,13 +5,13 @@
     <meta charset="utf-8">
 <title>reveal-hugo</title>
 <meta name="description" content="A Hugo theme for creating Reveal.js presentations">
-<meta name="author" content="Josh Dzielak">
+<meta name="author" content="Raphael Cobe">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/dataSanJose2019_nn_presentation/reveal-js/css/reset.css">
-<link rel="stylesheet" href="/dataSanJose2019_nn_presentation/reveal-js/css/reveal.css">
-<link rel="stylesheet" href="/dataSanJose2019_nn_presentation/min.css" id="theme"><link rel="stylesheet" href="/dataSanJose2019_nn_presentation/highlight-js/mono-blue.min.css"><link rel="stylesheet" href="/dataSanJose2019_nn_presentation/css/custom.css" id="custom_css">
+    <link rel="stylesheet" href="./reveal-js/css/reset.css">
+<link rel="stylesheet" href="./reveal-js/css/reveal.css">
+  <link rel="stylesheet" href="./_.min.338c2dbcdc88444722ee17f35ec70f9e63a5a18cf223c63078fad2595282c480.css" id="theme"><link rel="stylesheet" href="./highlight-js/mono-blue.min.css"><link rel="stylesheet" href="./css/custom.css" id="custom_css">
     
 
 <style>
@@ -142,7 +142,7 @@
 
 <h2 id="neurons-2">Neurons</h2>
 
-<h3 id="how-does-it-work">How does it work?</h3>
+<h3 id="how-do-they-work">How do they work?</h3>
 
 <ul>
 <div align="left">
@@ -191,20 +191,28 @@
 
 <p><center><img src="artificial_neuron.jpeg" width="800px"/></center></p>
 
-</section><section>
+</section>
+
+
+<section data-noprocess data-shortcode-slide
+      data-background-image="neurons.png">
+  
 
 <h2 id="neural-networks-2">Neural Networks</h2>
-
-<ul>
-<li>It appears that one reason why the human brain is <em>so powerful</em> is the
-sheer complexity of connections between neurons;</li>
-<li>The brain exhibits <em>huge degree of parallelism</em>;
-<center><img src="neurons.png" width="600px"/></center></li>
-</ul>
 
 </section><section>
 
 <h2 id="neural-networks-3">Neural Networks</h2>
+
+<ul>
+<li>It appears that one reason why the human brain is <em>so powerful</em> is the
+sheer complexity of connections between neurons;</li>
+<li>The brain exhibits <em>huge degree of parallelism</em>;</li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks">Artificial Neural Networks</h2>
 
 <ul>
 <li>Model each part of the neuron and interactions;</li>
@@ -215,7 +223,7 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 
 </section><section>
 
-<h2 id="neural-networks-4">Neural Networks</h2>
+<h2 id="artificial-neural-networks-1">Artificial Neural Networks</h2>
 
 <h3 id="function-approximation-machines">Function Approximation Machines</h3>
 
@@ -235,7 +243,7 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-2">Artificial Neural Networks</h2>
 
 <ul>
 <li>Can be seen as a directed graph with units (or neurons) situated at the vertices;
@@ -254,12 +262,586 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 
 </section><section>
 
-<h2 id="try-to-train-it-manually">Try to train it manually:</h2>
+<h2 id="artificial-neural-networks-3">Artificial Neural Networks</h2>
+
+<ul>
+<li><em>Input</em>, <em>Output</em>, and <em>Hidden</em> layers;</li>
+<li>Hidden as in &ldquo;not defined by the output&rdquo;;
+<center><img src="nn1.png" height="200px" style="margin-top:50px;"/></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-4">Artificial Neural Networks</h2>
+
+<h6 id="motivation-example-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
+
+<ul>
+<li>Imagine that you want to forecast the price of houses at your neighborhood;
+
+<ul>
+<li>After some research you found that 3 people sold houses for the following values:</li>
+</ul></li>
+</ul>
+
+<p><br /></p>
+
+<table>
+<thead>
+<tr>
+<th>Area (sq ft) (x)</th>
+<th>Price (y)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2,104</td>
+<td>$399,900$</td>
+</tr>
+
+<tr>
+<td>1,600</td>
+<td>$329,900$</td>
+</tr>
+
+<tr>
+<td>2,400</td>
+<td>$369,000$</td>
+</tr>
+</tbody>
+</table>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-5">Artificial Neural Networks</h2>
+
+<h6 id="motivation-example-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a-1">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
+
+<p><span class='fragment '
+  >
+   If you want to sell a 2K sq ft house, how much should ask for it?
+</span>
+<br /><br />
+<span class='fragment '
+  >
+   How about finding the <em>average price per square feet</em>?
+</span>
+<br /><br />
+<span class='fragment '
+  >
+   <em>$\$180$ per sq ft.</em>
+</span></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-6">Artificial Neural Networks</h2>
+
+<h6 id="motivation-example-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a-2">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
+
+<ul>
+<li>Our very first neural network looks like this:
+<span class='fragment '
+>
+<center><img src="nn2.png" width="600px"/></center>
+</span></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-7">Artificial Neural Networks</h2>
+
+<h6 id="motivation-example-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a-3">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
+
+<ul>
+<li>Multiplying $2,000$ sq ft by $180$ gives us $\$360,000$.</li>
+<li>Calculating the prediction is simple multiplication.</li>
+<li><strong><em>We needed to think about the weight we’ll be multiplying by.</em></strong></li>
+<li>That is what training means!</li>
+</ul>
+
+<p><br /></p>
+
+<table>
+<thead>
+<tr>
+<th>Area (sq ft) (x)</th>
+<th>Price (y)</th>
+<th>Estimated Price($\hat{y}$)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2,104</td>
+<td>$\$399,900$</td>
+<td>$\$378,720$</td>
+</tr>
+
+<tr>
+<td>1,600</td>
+<td>$\$329,900$</td>
+<td>$\$288,000$</td>
+</tr>
+
+<tr>
+<td>2,400</td>
+<td>$\$369,000$</td>
+<td>$\$432,000$</td>
+</tr>
+</tbody>
+</table>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-8">Artificial Neural Networks</h2>
+
+<h6 id="motivation-example-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a-4">Motivation Example (taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a>)</h6>
+
+<ul>
+<li>How bad is our model?
+
+<ul>
+<li>Calculate the <em>Error</em>;</li>
+<li>A better model is one that has less error;</li>
+</ul></li>
+</ul>
+
+<p><span class='fragment '
+  >
+   <em>Mean Square Error</em>
+</span><span class='fragment '
+  >
+  : $2,058$
+</span></p>
+
+<p><br /></p>
+
+<table>
+<thead>
+<tr>
+<th>Area (sq ft) (x)</th>
+<th>Price (y)</th>
+<th>Estimated Price($\hat{y}$)</th>
+<th>$y-\hat{y}$</th>
+<th>$(y-\hat{y})^2$</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>2,104</td>
+<td>$\$399,900$</td>
+<td>$\$378,720$</td>
+<td>$\$21$</td>
+<td>$449$</td>
+</tr>
+
+<tr>
+<td>1,600</td>
+<td>$\$329,900$</td>
+<td>$\$288,000$</td>
+<td>$\$42$</td>
+<td>$1756$</td>
+</tr>
+
+<tr>
+<td>2,400</td>
+<td>$\$369,000$</td>
+<td>$\$432,000$</td>
+<td>$\$-63$</td>
+<td>$3969$</td>
+</tr>
+</tbody>
+</table>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-9">Artificial Neural Networks</h2>
+
+<ul>
+<li>Fitting the line to our data:</li>
+</ul>
+
+<p><center><img src="manual_training1.gif" width="450px"/></center></p>
+
+<p>Follows the equation: $\hat{y} = W * x$</p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-10">Artificial Neural Networks</h2>
+
+<p>How about addind the <em>Intercept</em>?</p>
+
+<p><span class='fragment '
+  >
+   $\hat{y}=Wx + b$
+</span></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-11">Artificial Neural Networks</h2>
+
+<h3 id="the-bias">The Bias</h3>
+
+<p><center><img src="nn3.png" width="500px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-12">Artificial Neural Networks</h2>
+
+<h3 id="try-to-train-it-manually">Try to train it manually:</h3>
 
 <iframe src="manual_NN1.html" height="500px" width="800px">
 </iframe>
 
-<h6 id="widget-taken-from-jay-alammar-a-href-https-jalammar-github-io-visual-interactive-guide-basics-neural-networks-target-blank-blog-post-a">Widget taken from Jay Alammar <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" target="_blank">blog post</a></h6>
+</section><section>
+
+<h2 id="artificial-neural-networks-13">Artificial Neural Networks</h2>
+
+<h3 id="how-to-discover-the-correct-weights">How to discover the correct weights?</h3>
+
+<ul>
+<li>Gradient Descent:
+
+<ul>
+<li>Finding the <em>minimum of a function</em>;</li>
+<li>Look for the best weights values, <em>minimizing the error</em>;</li>
+<li>Takes steps proportional to the negative of the gradient of the function at the current point.</li>
+<li>Gradient is a vector that is tangent of a function and points in the direction of greatest increase of this function.</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-14">Artificial Neural Networks</h2>
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<ul>
+<li>In mathematics, gradient is defined as partial derivative for every input variable of function;</li>
+<li>Negative gradient is a vector pointing at the greatest decrease of a function;</li>
+<li>Minimize a function by iteratively moving a little bit in the direction of negative gradient;</li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-15">Artificial Neural Networks</h2>
+
+<h3 id="gradient-descent-1">Gradient Descent</h3>
+
+<ul>
+<li>With a single weight:</li>
+</ul>
+
+<p><center><img src="gd1.jpeg" width="500px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-16">Artificial Neural Networks</h2>
+
+<h3 id="gradient-descent-2">Gradient Descent</h3>
+
+<iframe src="manual_NN2.html" height="500px" width="800px">
+</iframe>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-17">Artificial Neural Networks</h2>
+
+<h3 id="perceptron">Perceptron</h3>
+
+<ul>
+<li>In 1958, Frank Rosenblatt proposed an algorithm for training the perceptron.</li>
+<li>Simplest form of Neural Network;</li>
+<li>One unique neuron;</li>
+<li>Adjustable Synaptic weights</li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-18">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-1">Perceptron</h3>
+
+<ul>
+<li>Classification of observations into two classes:
+<center><img src="perceptron1.png" height="350px"/></center></li>
+</ul>
+
+<h6 id="images-taken-from-a-href-https-towardsdatascience-com-perceptron-learning-algorithm-d5db0deab975-target-blank-towards-data-science-a">Images Taken from <a href="https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975" target="_blank">Towards Data Science</a></h6>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-19">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-2">Perceptron</h3>
+
+<ul>
+<li>Classification of observations into two classes:
+<center><img src="perceptron2.png" height="350px"/></center></li>
+</ul>
+
+<h6 id="images-taken-from-a-href-https-towardsdatascience-com-perceptron-learning-algorithm-d5db0deab975-target-blank-towards-data-science-a-1">Images Taken from <a href="https://towardsdatascience.com/perceptron-learning-algorithm-d5db0deab975" target="_blank">Towards Data Science</a></h6>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-20">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-3">Perceptron</h3>
+
+<ul>
+<li>E.g, the OR function:</li>
+</ul>
+
+<p><center><img src="or1.png" width="550px"/></center></p>
+
+<h4 id="find-the-w-i-values-that-could-solve-the-or-problem">Find the $w_i$ values that could solve the or problem.</h4>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-21">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-4">Perceptron</h3>
+
+<ul>
+<li>E.g, the OR function:</li>
+</ul>
+
+<p><br />
+<center><img src="or2.png" width="550px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-22">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-5">Perceptron</h3>
+
+<ul>
+<li>One possible solution $w_0=-1$, $w_1=1.1$, $w_2=1.1$:</li>
+</ul>
+
+<p><center><img src="or4.png" width="450px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-23">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<ul>
+<li><em>High-level</em> neural networks API;</li>
+<li>Capable of running on top of <em>TensorFlow</em>, <em>CNTK</em>, or <em>Theano</em>;</li>
+<li>Focus on enabling <em>fast experimentation</em>;
+
+<ul>
+<li>Go from idea to result with the <em>least possible delay</em>;</li>
+</ul></li>
+<li>Runs seamlessly on <em>CPU</em> and <em>GPU</em>;</li>
+<li>Compatible with: <em>Python 2.7-3.6</em>;</li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-24">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a-1">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<ul>
+<li><p>Use the implementation of the tensorflow:</p>
+
+<ul>
+<li><p>Create a sequential model (perceptron)</p>
+
+<pre><code class="language-python"># Import the Sequential model
+from tensorflow.keras.models import Sequential
+
+# Instantiate the model
+model = Sequential()
+</code></pre></li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-25">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a-2">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<ul>
+<li><p>Create a single layer with a single neuron:</p>
+
+<ul>
+<li><p><code>units</code> represent the number of neurons;</p>
+
+<pre><code class="language-python"># Import the Dense layer
+from tensorflow.keras.layers import Dense
+
+# Add a forward layer to the model 
+model.add(Dense(units=1, input_dim=2))
+</code></pre></li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-26">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a-3">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<ul>
+<li><p>Compile and train the model</p>
+
+<ul>
+<li><p>The compilation creates a computational graph of the training;</p>
+
+<pre><code class="language-python"># Specify the loss function (error) and the optimizer 
+#   (a variation of the gradient descent method)
+model.compile(loss=&quot;mean_squared_error&quot;, optimizer=&quot;sgd&quot;)
+
+# Fit the model using the train data and also 
+#   provide the expected result
+model.fit(x=train_data_X, y=train_data_Y)
+</code></pre></li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-27">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a-4">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<ul>
+<li><p>Evaluate the quality of the model:</p>
+
+<pre><code class="language-python"># Use evaluate function to get the loss and other metrics that the framework 
+#  makes available 
+loss_and_metrics = model.evaluate(train_data_X, train_data_Y)
+print(loss_and_metrics)
+#0.4043288230895996
+
+# Do a prediction using the trained model
+prediction = model.predict(train_data_X)
+print(prediction)
+# [[-0.25007164]
+#  [ 0.24998784]
+#  [ 0.24999022]
+#  [ 0.7500497 ]]
+</code></pre></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-28">Artificial Neural Networks</h2>
+
+<h3 id="the-a-href-https-keras-io-target-blank-keras-framework-a-5">The <a href="https://keras.io" target="_blank">Keras framework</a></h3>
+
+<h4 id="exercise">Exercise:</h4>
+
+<p>Run the example of the Jupyter notebook:
+<br />
+<a href="https://colab.research.google.com/drive/1hNOR60jfru-b0Vb-ec-Y_yF9pyuy8Wtj" target="_blank">Perceptron - OR</a></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-29">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-6">Perceptron</h3>
+
+<h4 id="exercise-1">Exercise:</h4>
+
+<ul>
+<li>What about the <em>AND</em> function?</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>$x_1$</th>
+<th>$x_2$</th>
+<th>$y$</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-30">Artificial Neural Networks</h2>
+
+<h3 id="neurons-4">Neurons</h3>
+
+<ul>
+<li>Activation Function
+
+<ul>
+<li>Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;</li>
+</ul></li>
+<li><em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;</li>
+<li>Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;
+
+<ul>
+<li>Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off)</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-31">Artificial Neural Networks</h2>
+
+<h3 id="the-bias-1">The Bias</h3>
+
+<p><center><img src="neuron3.png" width="650px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-32">Artificial Neural Networks</h2>
+
+<h3 id="the-bias-2">The Bias</h3>
+
+<p><center><img src="neuron4.png" width="650px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-33">Artificial Neural Networks</h2>
+
+<h3 id="the-bias-3">The Bias</h3>
+
+<p><center><img src="bias1.png" width="600px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-34">Artificial Neural Networks</h2>
+
+<h3 id="the-bias-4">The Bias</h3>
+
+<p><center><img src="bias2.png" width="600px"/></center></p>
 </section>
 
 </div>
@@ -270,9 +852,9 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <div class="line right"></div>
 
     </div>
-<script type="text/javascript" src=/reveal-hugo/object-assign.js></script>
+<script type="text/javascript" src=./reveal-hugo/object-assign.js></script>
 
-<a href="/dataSanJose2019_nn_presentation/reveal-js/css/print/" id="print-location" style="display: none;"></a>
+<a href="./reveal-js/css/print/" id="print-location" style="display: none;"></a>
 <script type="text/javascript">
   var printLocationElement = document.getElementById('print-location');
   var link = document.createElement('link');
@@ -285,7 +867,7 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <script type="application/json" id="reveal-hugo-site-params">{"history":true,"templates":{"grey":{"background":"#424242","transition":"convex"}}}</script>
 <script type="application/json" id="reveal-hugo-page-params">{"custom_css":"css/custom.css","custom_theme":"custom-theme.scss","custom_theme_compile":true,"highlight_theme":"mono-blue","transition":"slide","transition_speed":"fast"}</script>
 
-<script src="/dataSanJose2019_nn_presentation/reveal-js/js/reveal.js"></script>
+<script src="./reveal-js/js/reveal.js"></script>
 
 <script type="text/javascript">
   
@@ -317,16 +899,16 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 
   
   
-  <script type="text/javascript" src="/dataSanJose2019_nn_presentation/reveal-js/plugin/markdown/marked.js"></script>
+  <script type="text/javascript" src="./reveal-js/plugin/markdown/marked.js"></script>
   
-  <script type="text/javascript" src="/dataSanJose2019_nn_presentation/reveal-js/plugin/markdown/markdown.js"></script>
+  <script type="text/javascript" src="./reveal-js/plugin/markdown/markdown.js"></script>
   
-  <script type="text/javascript" src="/dataSanJose2019_nn_presentation/reveal-js/plugin/highlight/highlight.js"></script>
+  <script type="text/javascript" src="./reveal-js/plugin/highlight/highlight.js"></script>
   
-  <script type="text/javascript" src="/dataSanJose2019_nn_presentation/reveal-js/plugin/zoom-js/zoom.js"></script>
+  <script type="text/javascript" src="./reveal-js/plugin/zoom-js/zoom.js"></script>
   
   
-  <script type="text/javascript" src="/dataSanJose2019_nn_presentation/reveal-js/plugin/notes/notes.js"></script>
+  <script type="text/javascript" src="./reveal-js/plugin/notes/notes.js"></script>
 
 
 

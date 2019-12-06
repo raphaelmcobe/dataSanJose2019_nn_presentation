@@ -18,3 +18,7 @@ em{
 .customjs {
     background-color: #504e9e;
 }
+
+h6 {
+  font-size: 80% !important;
+}
