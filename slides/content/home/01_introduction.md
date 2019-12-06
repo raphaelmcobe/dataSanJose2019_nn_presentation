@@ -275,7 +275,100 @@ How about addind the <em>Intercept</em>?
 ### Perceptron
 * One possible solution $w_0=-1$, $w_1=1.1$, $w_2=1.1$:
 
-<center><img src="or3.png" width="450px"/></center>
+<center><img src="or4.png" width="450px"/></center>
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+
+* <em>High-level</em> neural networks API;
+* Capable of running on top of <em>TensorFlow</em>, <em>CNTK</em>, or <em>Theano</em>;
+* Focus on enabling <em>fast experimentation</em>;
+  * Go from idea to result with the <em>least possible delay</em>;
+* Runs seamlessly on <em>CPU</em> and <em>GPU</em>;
+* Compatible with: <em>Python 2.7-3.6</em>;
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+* Use the implementation of the tensorflow:
+  * Create a sequential model (perceptron)
+```python
+# Import the Sequential model
+from tensorflow.keras.models import Sequential
+
+# Instantiate the model
+model = Sequential()
+```
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+* Create a single layer with a single neuron:
+  * `units` represent the number of neurons;
+```python
+# Import the Dense layer
+from tensorflow.keras.layers import Dense
+
+# Add a forward layer to the model 
+model.add(Dense(units=1, input_dim=2))
+```
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+* Compile and train the model
+  * The compilation creates a computational graph of the training;
+```python
+# Specify the loss function (error) and the optimizer 
+#   (a variation of the gradient descent method)
+model.compile(loss="mean_squared_error", optimizer="sgd")
+
+# Fit the model using the train data and also 
+#   provide the expected result
+model.fit(x=train_data_X, y=train_data_Y)
+```
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+* Evaluate the quality of the model:
+```python
+# Use evaluate function to get the loss and other metrics that the framework 
+#  makes available 
+loss_and_metrics = model.evaluate(train_data_X, train_data_Y)
+print(loss_and_metrics)
+#0.4043288230895996
+
+# Do a prediction using the trained model
+prediction = model.predict(train_data_X)
+print(prediction)
+# [[-0.25007164]
+#  [ 0.24998784]
+#  [ 0.24999022]
+#  [ 0.7500497 ]]
+```
+
+---
+## Artificial Neural Networks
+### The <a href="https://keras.io" target="_blank">Keras framework</a>
+#### Exercise:
+Run the example of the Jupyter notebook:
+<br />
+<a href="https://colab.research.google.com/drive/1hNOR60jfru-b0Vb-ec-Y_yF9pyuy8Wtj" target="_blank">Perceptron - OR</a>
+
+---
+## Artificial Neural Networks
+### Perceptron
+#### Exercise:
+* What about the <em>AND</em> function?
+
+$x_1$|$x_2$|$y$
+-----|-----|----
+0    |0    |0
+0    |1    |0
+1    |0    |0
+1    |1    |1
 
 ---
 ## Artificial Neural Networks
