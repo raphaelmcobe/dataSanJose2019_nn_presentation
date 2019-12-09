@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="./reveal-js/css/reset.css">
 <link rel="stylesheet" href="./reveal-js/css/reveal.css">
-  <link rel="stylesheet" href="./min.css" id="theme"><link rel="stylesheet" href="./highlight-js/mono-blue.min.css"><link rel="stylesheet" href="./css/custom.css" id="custom_css">
+  <link rel="stylesheet" href="min.css" id="theme"><link rel="stylesheet" href="./highlight-js/mono-blue.min.css"><link rel="stylesheet" href="./css/custom.css" id="custom_css">
     
 
 <style>
@@ -795,6 +795,62 @@ print(prediction)
 
 <h2 id="artificial-neural-networks-30">Artificial Neural Networks</h2>
 
+<h3 id="activation-functions">Activation Functions</h3>
+
+<ul>
+<li>Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;</li>
+
+<li><p>Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off) - Step Function:</p>
+
+<pre><code class="language-python">if prediction[i]&gt;0.5: return 1
+return 0
+</code></pre></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-31">Artificial Neural Networks</h2>
+
+<h3 id="activation-functions-1">Activation Functions</h3>
+
+<ul>
+<li><em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;</li>
+<li>Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;</li>
+<li><em>Differentiable function</em> instead of the step function;
+<center> <img src="activation_functions.png" width="500px"/></center></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li><p>With this modification, a multi-layered network of perceptrons would become
+differentiable. Hence gradient descent could be applied to minimize the
+network’s error and the chain rule could “back-propagate” proper error
+derivatives to update the weights from every layer of the network.</p></li>
+
+<li><p>At the moment, one of the most efficient ways to train a multi-layer neural
+network is by using gradient descent with backpropagation. A requirement for
+backpropagation algorithm is a differentiable activation function. However, the
+Heaviside step function is non-differentiable at x = 0 and it has 0 derivative
+elsewhere. This means that gradient descent won’t be able to make a progress in
+updating the weights.</p></li>
+
+<li><p>The main objective of the neural network is to learn the values of the weights
+and biases so that the model could produce a prediction as close as possible to
+the real value. In order to do this, as in many optimisation problems, we’d
+like a small change in the weight or bias to cause only a small corresponding
+change in the output from the network. By doing this, we can continuously
+tweaked the values of weights and bias towards resulting the best
+approximation. Having a function that can only generate either 0 or 1 (or yes
+and no), won&rsquo;t help us to achieve this objective.</p></li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-32">Artificial Neural Networks</h2>
+
 <h3 id="perceptron-what-it-em-can-t-do-em">Perceptron - What it <em>can&rsquo;t do</em>!</h3>
 
 <ul>
@@ -805,27 +861,262 @@ print(prediction)
 
 </section><section>
 
-<h2 id="artificial-neural-networks-31">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-33">Artificial Neural Networks</h2>
 
-<h3 id="neurons-4">Neurons</h3>
-
-<ul>
-<li>Activation Function
+<h3 id="perceptron-solving-the-xor-problem">Perceptron - Solving the XOR problem</h3>
 
 <ul>
-<li>Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;</li>
+<li>3D example of the solution of learning the OR function:
+
+<ul>
+<li>Using <em>Sigmoid</em> function;
+<center> <img src="or5.png" width="600px"/></center></li>
 </ul></li>
-<li><em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;</li>
-<li>Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;
+</ul>
+
+
+
+
+<aside class="notes"><p>That creates a <strong>hyperplane</strong> that separates the classes;</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-34">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-solving-the-xor-problem-1">Perceptron - Solving the XOR problem</h3>
 
 <ul>
-<li>Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off)</li>
+<li>Maybe there is a combination of functions that could create hyperplanes that separate the <em>XOR</em> classes:
+
+<ul>
+<li>By increasing the number of layers we increase the complexity of the function represented by the ANN:
+<center> <img src="xor2.png" width="580px"/></center></li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><p>Now, there are 2 hyperplanes, that when put together, can perfectly separate the classes;</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-35">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-solving-the-xor-problem-2">Perceptron - Solving the XOR problem</h3>
+
+<ul>
+<li><p>Implementing an ANN that can solve the XOR problem:</p>
+
+<ul>
+<li><p>Add a new layer with a larger number of neurons:</p>
+
+<pre><code class="language-python">...
+#Create a layer with two neurons as output
+model.add(Dense(units=2), activation=&quot;sigmoid&quot;, input_dim=2)
+
+# Connect to the first layer that we defined
+model.add(Dense(units=1, activation=&quot;sigmoid&quot;)
+</code></pre></li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><p>Train for little steps and then increase the number of epochs</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-36">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-solving-the-xor-problem-3">Perceptron - Solving the XOR problem</h3>
+
+<ul>
+<li>The combination of the layers:
+<center> <img src="xor3.png" width="300px"/></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-37">Artificial Neural Networks</h2>
+
+<h4 id="em-multilayer-perceptrons-em-increasing-the-model-power"><em>Multilayer Perceptrons</em> - Increasing the model power</h4>
+
+<ul>
+<li><p>Typically represented by composing many different
+functions:
+$$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
+
+<li><p>The <em>depth</em> of the network - the <em>deep</em> in deep learning! (-;</p></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-38">Artificial Neural Networks</h2>
+
+<h4 id="em-multilayer-perceptrons-em-increasing-the-model-power-1"><em>Multilayer Perceptrons</em> - Increasing the model power</h4>
+
+<ul>
+<li>Information flows from $x$ , through computations and finally to $y$.</li>
+<li>No feedback!</li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-39">Artificial Neural Networks</h2>
+
+<h3 id="understanding-the-training">Understanding the training</h3>
+
+<ul>
+<li>Plot the architecture of the network:
+<center><img src="nn_architecture.png" width="350px" /></center></li>
+</ul>
+
+
+
+
+<aside class="notes"><p>The ? means that they take as much examples as possible;</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-40">Artificial Neural Networks</h2>
+
+<h3 id="understanding-the-training-1">Understanding the training</h3>
+
+<ul>
+<li>Plotting the training progress of the XOR ANN:
+<center><img src="loss_trainning2.png" width="500px" /></center>
+<center>In the case of the XOR. <em>What is wrong with that?</em></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-41">Artificial Neural Networks</h2>
+
+<h3 id="problems-with-the-training-procedure">Problems with the training procedure:</h3>
+
+<ul>
+<li>Saddle points:
+
+<ul>
+<li>No matter how long you train your model for, <em> the error remains (almost) constant!</em>
+<center> <img src="saddle.png" width="300px" /></center></li>
 </ul></li>
 </ul>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-32">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-42">Artificial Neural Networks</h2>
+
+<h3 id="optimization-alternatives">Optimization alternatives</h3>
+
+<ul>
+<li>The Gradient Descent is <em>not always the best option</em> to go with:
+
+<ul>
+<li>Only does the update after <em>calculating the derivative for the whole
+dataset</em>;</li>
+<li>Can take a <em>long time to find the minimum</em> point;</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-43">Artificial Neural Networks</h2>
+
+<h3 id="optimization-alternatives-1">Optimization alternatives</h3>
+
+<ul>
+<li>The Gradient Descent is <em>not always the best option</em> to go with:
+
+<ul>
+<li>For non-convex surfaces, it may only find the local minimums - <a href="gd2.gif" target="_bank">the saddle situation</a>;</li>
+<li><strong><em>Vectorization</em></strong></li>
+</ul></li>
+</ul>
+
+<p><a href="vectorization.jpeg" target="_blank"><center><img src="vectorization.jpeg" width="450px" /></center></a></p>
+
+
+
+
+<aside class="notes"><ul>
+<li>For large datasets, the vectorization of data doesn’t fit into memory.</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-44">Artificial Neural Networks</h2>
+
+<h3 id="optimization-alternatives-2">Optimization alternatives</h3>
+
+<ul>
+<li><p><a href="gd.gif" target="_blank">Gradient Descent</a> alternatives:</p>
+
+<ul>
+<li><a href="sgd.gif" target="_blank">Stochastic Gradient Descent</a>: updates at each input;</li>
+
+<li><p><a href="minibatch.gif" target="_blank">Minibatch Gradient Descent</a>: updates after reading a batch of examples;
+<br /><br />
+<center></p>
+
+<h6 id="animations-taken-from-vikashraj-luhaniwal-a-href-https-towardsdatascience-com-why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096-target-blank-post-a">Animations taken from Vikashraj Luhaniwal <a href="https://towardsdatascience.com/why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096" target = "_blank">post</a>.</h6>
+
+<p></center></p></li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><p>Minibatch:
+* Updates are less noisy compared to SGD which leads to better convergence.
+* A high number of updates in a single epoch compared to GD so less number of epochs are required for large datasets.
+* Fits very well to the processor memory which makes computing faster.</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-45">Artificial Neural Networks</h2>
+
+<h3 id="optimization-alternatives-3">Optimization alternatives</h3>
+
+<h6 id="adaptative-learning-rates">Adaptative Learning Rates:</h6>
+
+<ul>
+<li><p><a href="adagrad.gif" target="_blank">Adagrad</a>, <a href="rmsprop.gif" target="_blank">RMSProp</a>, <a href="adam.gif" target="_blank">Adam</a>;</p>
+
+<p><br /><br />
+<center></p>
+
+<h6 id="animations-taken-from-vikashraj-luhaniwal-a-href-https-towardsdatascience-com-why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096-target-blank-post-a-1">Animations taken from Vikashraj Luhaniwal <a href="https://towardsdatascience.com/why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096" target = "_blank">post</a>.</h6>
+
+<p></center></p></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>For Adagrad:
+
+<ul>
+<li>Parameters with small updates(sparse features) have high learning rate whereas the parameters with large updates(dense features) have low learning rateupdates at each input;</li>
+<li>The learning rate decays very aggressively</li>
+</ul></li>
+<li>RMSProp: A large number of oscillations with high learning rate or large gradient</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-46">Artificial Neural Networks</h2>
 
 <h3 id="the-bias-1">The Bias</h3>
 
@@ -833,7 +1124,7 @@ print(prediction)
 
 </section><section>
 
-<h2 id="artificial-neural-networks-33">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-47">Artificial Neural Networks</h2>
 
 <h3 id="the-bias-2">The Bias</h3>
 
@@ -841,7 +1132,7 @@ print(prediction)
 
 </section><section>
 
-<h2 id="artificial-neural-networks-34">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-48">Artificial Neural Networks</h2>
 
 <h3 id="the-bias-3">The Bias</h3>
 
@@ -849,7 +1140,7 @@ print(prediction)
 
 </section><section>
 
-<h2 id="artificial-neural-networks-35">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-49">Artificial Neural Networks</h2>
 
 <h3 id="the-bias-4">The Bias</h3>
 
