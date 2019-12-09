@@ -372,21 +372,196 @@ $x_1$|$x_2$|$y$
 
 ---
 ## Artificial Neural Networks
+### Activation Functions
+* Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;
+* Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off) - Step Function:
+```python
+if prediction[i]>0.5: return 1
+return 0
+```
+
+---
+## Artificial Neural Networks
+### Activation Functions
+* <em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;
+* Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;
+* <em>Differentiable function</em> instead of the step function;
+<center> <img src="activation_functions.png" width="500px"/></center>
+
+{{% note %}}
+* With this modification, a multi-layered network of perceptrons would become
+differentiable. Hence gradient descent could be applied to minimize the
+network’s error and the chain rule could “back-propagate” proper error
+derivatives to update the weights from every layer of the network.
+
+* At the moment, one of the most efficient ways to train a multi-layer neural
+network is by using gradient descent with backpropagation. A requirement for
+backpropagation algorithm is a differentiable activation function. However, the
+Heaviside step function is non-differentiable at x = 0 and it has 0 derivative
+elsewhere. This means that gradient descent won’t be able to make a progress in
+updating the weights.  
+
+* The main objective of the neural network is to learn the values of the weights
+and biases so that the model could produce a prediction as close as possible to
+the real value. In order to do this, as in many optimisation problems, we’d
+like a small change in the weight or bias to cause only a small corresponding
+change in the output from the network. By doing this, we can continuously
+tweaked the values of weights and bias towards resulting the best
+approximation. Having a function that can only generate either 0 or 1 (or yes
+and no), won't help us to achieve this objective.
+{{% /note %}}
+
+---
+## Artificial Neural Networks
 ### Perceptron - What it <em>can't do</em>!
 
 * The <em>XOR</em> function:
 
 <center><img src="xor1.png" width="650px"/></center>
 
+---
+## Artificial Neural Networks
+### Perceptron - Solving the XOR problem
+* 3D example of the solution of learning the OR function:
+  * Using <em>Sigmoid</em> function;
+<center> <img src="or5.png" width="600px"/></center>
+
+{{% note %}}
+That creates a <strong>hyperplane</strong> that separates the classes;
+{{% /note %}}
 
 ---
 ## Artificial Neural Networks
-### Neurons
-* Activation Function
-  * Describes <em>whether or not the neuron fires</em>, i.e., if it forwards its value for the next neuron layer;
-* <em>Multiply the input</em> by its <em>weights</em>, <em>add the bias</em> and <em>applies activation</em>;
-* Sigmoid, Hyperbolic Tangent, Rectified Linear Unit;
-  * Historically they translated the output of the neuron into either 1 (On/active) or 0 (Off)
+### Perceptron - Solving the XOR problem
+* Maybe there is a combination of functions that could create hyperplanes that separate the <em>XOR</em> classes:
+  * By increasing the number of layers we increase the complexity of the function represented by the ANN:
+<center> <img src="xor2.png" width="580px"/></center>
+
+{{% note %}}
+Now, there are 2 hyperplanes, that when put together, can perfectly separate the classes;
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Perceptron - Solving the XOR problem
+* Implementing an ANN that can solve the XOR problem:
+  * Add a new layer with a larger number of neurons:
+
+```python
+...
+#Create a layer with two neurons as output
+model.add(Dense(units=2), activation="sigmoid", input_dim=2)
+
+# Connect to the first layer that we defined
+model.add(Dense(units=1, activation="sigmoid")
+```
+
+{{% note %}}
+Train for little steps and then increase the number of epochs
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Perceptron - Solving the XOR problem
+* The combination of the layers:
+<center> <img src="xor3.png" width="300px"/></center>
+
+---
+## Artificial Neural Networks
+#### <em>Multilayer Perceptrons</em> - Increasing the model power
+* Typically represented by composing many different
+functions:
+$$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$
+
+* The <em>depth</em> of the network - the <em>deep</em> in deep learning! (-;
+
+---
+## Artificial Neural Networks
+#### <em>Multilayer Perceptrons</em> - Increasing the model power
+* Information flows from $x$ , through computations and finally to $y$.
+* No feedback!
+
+---
+## Artificial Neural Networks
+### Understanding the training  
+* Plot the architecture of the network:
+<center><img src="nn_architecture.png" width="350px" /></center>
+
+{{% note %}}
+The ? means that they take as much examples as possible;
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Understanding the training
+* Plotting the training progress of the XOR ANN:
+<center><img src="loss_trainning2.png" width="500px" /></center>
+<center>In the case of the XOR. <em>What is wrong with that?</em></center>
+
+---
+## Artificial Neural Networks
+### Problems with the training procedure:
+* Saddle points:
+	* No matter how long you train your model for, <em> the error remains (almost) constant!</em> 
+<center> <img src="saddle.png" width="300px" /></center>
+
+---
+## Artificial Neural Networks
+### Optimization alternatives
+* The Gradient Descent is <em>not always the best option</em> to go with:
+  * Only does the update after <em>calculating the derivative for the whole
+    dataset</em>;
+  * Can take a <em>long time to find the minimum</em> point;
+
+
+---
+## Artificial Neural Networks
+### Optimization alternatives
+* The Gradient Descent is <em>not always the best option</em> to go with:
+  * For non-convex surfaces, it may only find the local minimums - <a href="gd2.gif" target="_bank">the saddle situation</a>;
+  * <strong><em>Vectorization</em></strong>
+
+<a href="vectorization.jpeg" target="_blank"><center><img src="vectorization.jpeg" width="450px" /></center></a>
+
+{{% note %}}
+* For large datasets, the vectorization of data doesn’t fit into memory.
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Optimization alternatives
+* <a href="gd.gif" target="_blank">Gradient Descent</a> alternatives:
+  * <a href="sgd.gif" target="_blank">Stochastic Gradient Descent</a>: updates at each input;
+  * <a href="minibatch.gif" target="_blank">Minibatch Gradient Descent</a>: updates after reading a batch of examples;
+<br /><br />
+<center>
+###### Animations taken from Vikashraj Luhaniwal <a href="https://towardsdatascience.com/why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096" target = "_blank">post</a>.
+</center>
+
+{{% note %}}
+Minibatch:
+* Updates are less noisy compared to SGD which leads to better convergence.
+* A high number of updates in a single epoch compared to GD so less number of epochs are required for large datasets.
+* Fits very well to the processor memory which makes computing faster.
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Optimization alternatives
+###### Adaptative Learning Rates:
+* <a href="adagrad.gif" target="_blank">Adagrad</a>, <a href="rmsprop.gif" target="_blank">RMSProp</a>, <a href="adam.gif" target="_blank">Adam</a>;
+###### 
+<br /><br />
+<center>
+###### Animations taken from Vikashraj Luhaniwal <a href="https://towardsdatascience.com/why-gradient-descent-isnt-enough-a-comprehensive-introduction-to-optimization-algorithms-in-59670fd5c096" target = "_blank">post</a>.
+</center>
+
+{{% note %}}
+* For Adagrad: 
+  * Parameters with small updates(sparse features) have high learning rate whereas the parameters with large updates(dense features) have low learning rateupdates at each input;
+  * The learning rate decays very aggressively
+* RMSProp: A large number of oscillations with high learning rate or large gradient
+{{% /note %}}
 
 ---
 ## Artificial Neural Networks
