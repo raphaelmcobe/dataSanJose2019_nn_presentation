@@ -435,7 +435,7 @@ That creates a <strong>hyperplane</strong> that separates the classes;
 ### Perceptron - Solving the XOR problem
 * Maybe there is a combination of functions that could create hyperplanes that separate the <em>XOR</em> classes:
   * By increasing the number of layers we increase the complexity of the function represented by the ANN:
-<center> <img src="xor2.png" width="580px"/></center>
+<center><a href="xor2.png" target="_blank"><img src="xor2.png" width="580px"/></a></center>
 
 {{% note %}}
 Now, there are 2 hyperplanes, that when put together, can perfectly separate the classes;
@@ -464,7 +464,7 @@ Train for little steps and then increase the number of epochs
 ## Artificial Neural Networks
 ### Perceptron - Solving the XOR problem
 * The combination of the layers:
-<center> <img src="xor3.png" width="300px"/></center>
+<center><a href="xor3.png" target="_blank"><img src="xor3.png" width="300px"/></a></center>
 
 ---
 ## Artificial Neural Networks
@@ -503,7 +503,7 @@ The ? means that they take as much examples as possible;
 ### Problems with the training procedure:
 * Saddle points:
 	* No matter how long you train your model for, <em> the error remains (almost) constant!</em> 
-<center> <img src="saddle.png" width="300px" /></center>
+<center><a href="saddle.png" target="_blank"><img src="saddle.png" width="300px" /></a></center>
 
 ---
 ## Artificial Neural Networks
@@ -517,7 +517,7 @@ The ? means that they take as much examples as possible;
 ---
 ## Artificial Neural Networks
 ### Optimization alternatives
-* The Gradient Descent is <em>not always the best option</em> to go with:
+* The <a href="gd.gif" target="_blank">Gradient Descent</a> is <em>not always the best option</em> to go with:
   * For non-convex surfaces, it may only find the local minimums - <a href="gd2.gif" target="_bank">the saddle situation</a>;
   * <strong><em>Vectorization</em></strong>
 
@@ -530,7 +530,7 @@ The ? means that they take as much examples as possible;
 ---
 ## Artificial Neural Networks
 ### Optimization alternatives
-* <a href="gd.gif" target="_blank">Gradient Descent</a> alternatives:
+* Gradient Descent alternatives:
   * <a href="sgd.gif" target="_blank">Stochastic Gradient Descent</a>: updates at each input;
   * <a href="minibatch.gif" target="_blank">Minibatch Gradient Descent</a>: updates after reading a batch of examples;
 <br /><br />
@@ -566,17 +566,6 @@ Minibatch:
 ---
 ## Artificial Neural Networks
 ### The Bias
-<center><img src="neuron3.png" width="650px"/></center>
-
----
-
-## Artificial Neural Networks
-### The Bias
-<center><img src="neuron4.png" width="650px"/></center>
-
----
-## Artificial Neural Networks
-### The Bias
 <center><img src="bias1.png" width="600px"/></center>
 
 ---
@@ -584,7 +573,30 @@ Minibatch:
 ### The Bias
 <center><img src="bias2.png" width="600px"/></center>
 
+---
+{{<slide background-image="cms.png">}}
+# <span style="color:#fff;"> The Exercise</span>
 
+---
+## Artificial Neural Networks
+### The Exercise
 
+<center><a href="atlas_particle_shower.jpg" target="_blank"><img src="atlas_particle_shower.jpg" width="500px"/></a></center>
 
+---
+## Artificial Neural Networks
+### The Exercise
 
+<center><a href="jet-images.png" target="_blank"><img src="jet-images.png" width="500px"/></a></center>
+
+---
+## Artificial Neural Networks
+### Signal VS Background
+
+<center><a href="backgroundVSsignal.png" target="_blank"><img src="backgroundVSsignal.png" width="700px"/></a></center>
+
+---
+## Artificial Neural Networks
+### Signal VS Background
+
+Run this <a href="https://colab.research.google.com/drive/14sdqWQdvjaxi_IZXLtrAzCP4emEpmqa-" target="_blank">Jupyter Notebook</a> for performing the Jet Classification.
