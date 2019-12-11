@@ -26,6 +26,9 @@
 
 <img src="neuron1.png"/>
 
+{{% note %}}
+* three major types of neurons: <em>sensory neurons</em>, <em>motor neurons</em>, and <em>interneurons</em>
+{{% /note %}}
 
 ---
 ## Neurons
@@ -72,15 +75,12 @@ sheer complexity of connections between neurons;
 * The brain exhibits <em>huge degree of parallelism</em>;
 
 ---
-
 ## Artificial Neural Networks
 * Model each part of the neuron and interactions;
-* <em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based
-on the synaptic strength at that synapse (e.g. $w_0$ ); 
+* <em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based on the synaptic strength at that synapse (e.g. $w_0$ ); 
 * Learn <em>synapses strengths</em>;
 
 ---
-
 ## Artificial Neural Networks
 ### Function Approximation Machines
 * Datasets as composite functions: $y=f^{*}(x)$
@@ -90,7 +90,6 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
   * Learn the $w$ parameters; 
 
 ---
-
 ## Artificial Neural Networks
 * Can be seen as a directed graph with units (or neurons) situated at the vertices;
   * Some are <em>input units</em>
@@ -115,9 +114,9 @@ on the synaptic strength at that synapse (e.g. $w_0$ );
 
 Area (sq ft) (x)|	Price (y)
 ----------------|----------
-2,104	          |  $399,900$
-1,600	          |  $329,900$
-2,400	          |  $369,000$
+2,104	          |  $\$399,900$
+1,600	          |  $\$329,900$
+2,400	          |  $\$369,000$
 
 ---
 ## Artificial Neural Networks
@@ -203,15 +202,15 @@ How about addind the <em>Intercept</em>?
 * Gradient Descent:
   * Finding the <em>minimum of a function</em>;
     * Look for the best weights values, <em>minimizing the error</em>;
-  * Takes steps proportional to the negative of the gradient of the function at the current point.
-  * Gradient is a vector that is tangent of a function and points in the direction of greatest increase of this function. 
+  * Takes steps <em>proportional to the negative of the gradient</em> of the function at the current point.
+  * Gradient is a vector that is <em>tangent of a function</em> and points in the direction of greatest increase of this function. 
 
 ---
 ## Artificial Neural Networks
 ### Gradient Descent
-* In mathematics, gradient is defined as partial derivative for every input variable of function;
-* Negative gradient is a vector pointing at the greatest decrease of a function;
-* Minimize a function by iteratively moving a little bit in the direction of negative gradient;
+* In mathematics, gradient is defined as <em>partial derivative for every input variable</em> of function;
+* <em>Negative gradient</em> is a vector pointing at the <em>greatest decrease</em> of a function;
+* <em>Minimize a function</em> by iteratively moving a little bit in the direction of negative gradient;
 
 ---
 ## Artificial Neural Networks
@@ -227,7 +226,6 @@ How about addind the <em>Intercept</em>?
 
 <iframe src="manual_NN2.html" height="500px" width="800px">
 </iframe>
-
 
 ---
 ## Artificial Neural Networks
@@ -314,11 +312,16 @@ from tensorflow.keras.layers import Dense
 model.add(Dense(units=1, input_dim=2))
 ```
 
+{{% note %}}
+* Dense means a fully connected layer. 
+{{% /note %}}
+
 ---
 ## Artificial Neural Networks
 ### The <a href="https://keras.io" target="_blank">Keras framework</a>
 * Compile and train the model
-  * The compilation creates a computational graph of the training;
+  * The compilation creates a <a
+    href="https://medium.com/tebs-lab/deep-neural-networks-as-computational-graphs-867fcaa56c9" target="_blank">computational graph</a> of the training;
 ```python
 # Specify the loss function (error) and the optimizer 
 #   (a variation of the gradient descent method)
@@ -328,6 +331,14 @@ model.compile(loss="mean_squared_error", optimizer="sgd")
 #   provide the expected result
 model.fit(x=train_data_X, y=train_data_Y)
 ```
+{{% note %}}
+* Computational Graphs:
+  * Nodes represent both inputs and operations;
+  * Even relatively “simple” deep neural networks have hundreds of thousands of nodes and edges;
+  * Lots of operations can run in parallel;
+    * Example: $(x*y)+(w*z)$
+  * Makes it easier to create an auto diferentiation strategy;
+{{% /note %}}
 
 ---
 ## Artificial Neural Networks
@@ -466,6 +477,15 @@ Train for little steps and then increase the number of epochs
 * The combination of the layers:
 <center><a href="xor3.png" target="_blank"><img src="xor3.png" width="300px"/></a></center>
 
+{{% note %}}
+* That is what people mean when they say we don't know how deep neural networks
+  work. We know that it is a composition of functions, but the shape of that
+  remains a little bit hard to define;
+* Yesterday we saw polynomial transformation of features - in that we saw that
+  we changed the shape of the regression line being built;
+
+{{% /note %}}
+
 ---
 ## Artificial Neural Networks
 #### <em>Multilayer Perceptrons</em> - Increasing the model power
@@ -485,7 +505,10 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$
 ## Artificial Neural Networks
 ### Understanding the training  
 * Plot the architecture of the network:
-<center><img src="nn_architecture.png" width="350px" /></center>
+```python
+tf.keras.utils.plot_model(model, show_shapes=True, show_layer_names=False)
+```
+<center><img src="nn_architecture.png" width="250px" /></center>
 
 {{% note %}}
 The ? means that they take as much examples as possible;
@@ -495,8 +518,22 @@ The ? means that they take as much examples as possible;
 ## Artificial Neural Networks
 ### Understanding the training
 * Plotting the training progress of the XOR ANN:
-<center><img src="loss_trainning2.png" width="500px" /></center>
-<center>In the case of the XOR. <em>What is wrong with that?</em></center>
+```python
+history = model.fit(x=X_data, y=Y_data, epochs=2500, verbose=0)
+import matplotlib.pyplot as plt
+plt.plot(history.history['loss'])
+plt.title('Model Training Progression')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Loss'], loc='upper left')
+plt.show()
+```
+<center><a href="loss_trainning2.png" target="_blank"><img src="loss_trainning2.png" width="200px" /></a></center>
+
+{{% note %}}
+* This is called the <em>learning curve</em>;
+* In the case of the XOR. <em>What is wrong with that?</em>
+{{% /note %}}
 
 ---
 ## Artificial Neural Networks
@@ -505,6 +542,12 @@ The ? means that they take as much examples as possible;
 	* No matter how long you train your model for, <em> the error remains (almost) constant!</em> 
 <center><a href="saddle.png" target="_blank"><img src="saddle.png" width="300px" /></a></center>
 
+{{% note %}}
+* That eventually happens because of a bad optimization function;
+* Imagine that you could add momentum to the gradient descent - probably it
+  could continue updating;
+{{% /note %}}
+
 ---
 ## Artificial Neural Networks
 ### Optimization alternatives
@@ -512,7 +555,6 @@ The ? means that they take as much examples as possible;
   * Only does the update after <em>calculating the derivative for the whole
     dataset</em>;
   * Can take a <em>long time to find the minimum</em> point;
-
 
 ---
 ## Artificial Neural Networks
@@ -574,6 +616,107 @@ Minibatch:
 <center><img src="bias2.png" width="600px"/></center>
 
 ---
+## Artificial Neural Networks
+### Predicting probabilities
+* Imagine that we have <em>more than 2 classes</em> to output;
+* One of the <em>most popular usages</em> for ANN;
+<center><a href="classification_example.jpeg" target="_blank"><img src="classification_example.jpeg" width="300px"/></a></center>
+
+---
+## Artificial Neural Networks
+### Predicting probabilities
+* The <a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank">Softmax</a> function;
+* Takes an array and outputs a probability distribution, i.e., <em>the probability
+  of the input example belonging to each of the classes</em> in my problem;
+* One of the activation functions available at `Keras`:
+```python
+model.add(Dense(2, activation="softmax"))
+```
+
+
+{{% note %}}
+* Softmax - function that takes as input a vector of K real numbers, and normalizes it into a probability distribution
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Loss functions
+* For regression problems
+  * Mean squared error is <em>not always the best one to go</em>;
+    * What if we have a three classes problem?
+  * Alternatives: `mean_absolute_error`, `mean_squared_logarithmic_error`
+
+{{% note %}}
+* logarithm means changing scale as the error can grow really fast;
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Loss functions
+* <a href="https://en.wikipedia.org/wiki/Cross_entropy" target="_blank">Cross Entropy</a> loss:
+  * Default loss function to use for binary classification problems.
+  * Measures the <em>performance of a model</em> whose output is a probability value between 0 and 1;
+  * <em>Loss increases</em> as the <em>predicted probability diverges</em> from the actual label;
+  * A <em>perfect model</em> would have a log loss of 0;
+
+{{% note %}}
+*  As the correct predicted probability decreases, however, the log loss increases rapidly:
+  * In case the model has to answer 1, but it does with a very low probability;
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Dealing with overfitting
+* <em>Dropout</em> layers:
+  * Randomly *disable* some of the neurons during the training passes;
+
+<center><a href="dropout.gif" target="_blank"><img src="dropout.gif" width="500px"/></a></center>
+
+---
+## Artificial Neural Networks
+### Dealing with overfitting
+* <em>Dropout</em> layers:
+```python
+# Drop half of the neurons outputs from the previous layer
+model.add(Dropout(0.5))
+```
+
+{{% note %}}
+* “drops out” a random set of activations in that layer by setting them to zero;
+* forces the network to be redundant;
+* the net should be able to provide the right classification for a specific example even if some of the activations are dropped out;
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Larger Example
+* The <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset: database of handwritten digits;
+* Dataset included in Keras;
+<center><a href="mnist.png" target="_blank"><img src="mnist.png" width="500px"/></a></center>
+
+---
+## Artificial Neural Networks
+### The MNIST MLP
+* Try to improve the classification results using <a href="https://colab.research.google.com/drive/1AnGJz_R0PJF0d83ye_3y7NPGuX5YipBi" target="_blank">this notebook</a>:
+* Things to try:
+  * Increase the number of neurons at the first layer;
+  * Change the optimizer and the loss function;
+  * Try `categorical_crossentropy` and `rmsprop` optimizer;
+  * Try adding some extra layers;
+
+---
+## Artificial Neural Networks
+### The MNIST MLP
+* Try to improve the classification results using <a href="https://colab.research.google.com/drive/1AnGJz_R0PJF0d83ye_3y7NPGuX5YipBi" target="_blank">this notebook</a>:
+* Things to try:
+  * Try addind `Dropout` layers;
+  * Increase the number of `epochs`;
+  * Try to <em>normalize the data</em>!
+
+* What is the best accuracy?
+* <a href="https://colab.research.google.com/drive/1LnkhSA7XbEWMNdaebOXxsOENr6m-0vpZ" target="_blank">My solution</a>.
+
+---
 {{<slide background-image="cms.png">}}
 # <span style="color:#fff;"> The Exercise</span>
 
@@ -588,6 +731,12 @@ Minibatch:
 ### The Exercise
 
 <center><a href="jet-images.png" target="_blank"><img src="jet-images.png" width="500px"/></a></center>
+
+---
+## Artificial Neural Networks
+### The Exercise
+* Quantum Chromodynamics
+<center><a href="qcd.png" target="_blank"><img src="qcd.png" width="500px"/></a></center>
 
 ---
 ## Artificial Neural Networks

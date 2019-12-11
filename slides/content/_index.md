@@ -1,6 +1,6 @@
 +++
-title = "reveal-hugo"
-description = "A Hugo theme for creating Reveal.js presentations"
+title = "Introduction to Artificial Neural Networks"
+description = "Intro to ANN Presentation"
 outputs = ["Reveal"]
 plugins = ["plugins/mathjax.js"]
 
