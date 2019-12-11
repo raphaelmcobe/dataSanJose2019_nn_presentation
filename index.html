@@ -102,10 +102,10 @@
 <h2 id="neural-networks">Neural Networks</h2>
 
 <ul>
-<li>Neurons as structural constituents of the brain [Ramón y Cajál, 1911];</li>
-<li>Five to six orders of magnitude slower than silicon logic gates;</li>
-<li>In a silicon chip happen in the nanosecond on chip) vs millisecond range (neural events);</li>
-<li>A truly staggering number of neurons (nerve cells) with massive interconnections between them;</li>
+<li>Neurons as structural constituents of the brain <a href="http://hobertlab.org/wp-content/uploads/2014/10/Andres-Barquin_Cajal_2001.pdf" target="_blank">[Ramón y Cajál, 1911]</a>;</li>
+<li>Five to six orders of magnitude <em>slower than silicon logic gates</em>;</li>
+<li>In a silicon chip happen in the <em>nanosecond (on chip)</em> vs <em>millisecond range (neural events)</em>;</li>
+<li>A truly staggering number of neurons (nerve cells) with <em>massive interconnections between them</em>;</li>
 </ul>
 
 </section><section>
@@ -114,7 +114,7 @@
 
 <ul>
 <li>Receive input from other units and decides whether or not to fire;</li>
-<li>Approximately 10 billion neurons in the human cortex, and 60 trillion synapses or connections [Shepherd and Koch, 1990];</li>
+<li>Approximately <em>10 billion neurons</em> in the human cortex, and <em>60 trillion synapses</em> or connections <a href="https://www.researchgate.net/publication/37597256_Biophysics_of_Computation_Neurons_Synapses_and_Membranes" target="_blank">[Shepherd and Koch, 1990]</a>;</li>
 <li>Energy efficiency of the brain is approximately $10^{−16}$ joules per operation per second against ~ $10^{−8}$ in a computer;</li>
 </ul>
 
@@ -883,6 +883,20 @@ and no), won&rsquo;t help us to achieve this objective.</p></li>
 
 <h2 id="artificial-neural-networks-32">Artificial Neural Networks</h2>
 
+<h3 id="the-bias-1">The Bias</h3>
+
+<p><center><img src="bias1.png" width="600px"/></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-33">Artificial Neural Networks</h2>
+
+<h3 id="the-bias-2">The Bias</h3>
+
+<h2 id="center-img-src-bias2-png-width-600px-center"><center><img src="bias2.png" width="600px"/></center></h2>
+
+<h2 id="artificial-neural-networks-34">Artificial Neural Networks</h2>
+
 <h3 id="perceptron-what-it-em-can-t-do-em">Perceptron - What it <em>can&rsquo;t do</em>!</h3>
 
 <ul>
@@ -893,7 +907,7 @@ and no), won&rsquo;t help us to achieve this objective.</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-33">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-35">Artificial Neural Networks</h2>
 
 <h3 id="perceptron-solving-the-xor-problem">Perceptron - Solving the XOR problem</h3>
 
@@ -914,7 +928,7 @@ and no), won&rsquo;t help us to achieve this objective.</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-34">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-36">Artificial Neural Networks</h2>
 
 <h3 id="perceptron-solving-the-xor-problem-1">Perceptron - Solving the XOR problem</h3>
 
@@ -935,37 +949,9 @@ and no), won&rsquo;t help us to achieve this objective.</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-35">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-37">Artificial Neural Networks</h2>
 
 <h3 id="perceptron-solving-the-xor-problem-2">Perceptron - Solving the XOR problem</h3>
-
-<ul>
-<li><p>Implementing an ANN that can solve the XOR problem:</p>
-
-<ul>
-<li><p>Add a new layer with a larger number of neurons:</p>
-
-<pre><code class="language-python">...
-#Create a layer with two neurons as output
-model.add(Dense(units=2), activation=&quot;sigmoid&quot;, input_dim=2)
-
-# Connect to the first layer that we defined
-model.add(Dense(units=1, activation=&quot;sigmoid&quot;)
-</code></pre></li>
-</ul></li>
-</ul>
-
-
-
-
-<aside class="notes"><p>Train for little steps and then increase the number of epochs</p>
-</aside>
-
-</section><section>
-
-<h2 id="artificial-neural-networks-36">Artificial Neural Networks</h2>
-
-<h3 id="perceptron-solving-the-xor-problem-3">Perceptron - Solving the XOR problem</h3>
 
 <ul>
 <li>The combination of the layers:
@@ -986,7 +972,35 @@ we changed the shape of the regression line being built;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-37">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-38">Artificial Neural Networks</h2>
+
+<h3 id="perceptron-solving-the-xor-problem-3">Perceptron - Solving the XOR problem</h3>
+
+<ul>
+<li><p>Implementing an ANN that can solve the XOR problem:</p>
+
+<ul>
+<li><p>Add a new layer with a larger number of neurons:</p>
+
+<pre><code class="language-python">...
+#Create a layer with 4 neurons as output
+model.add(Dense(units=4), activation=&quot;sigmoid&quot;, input_dim=2)
+
+# Connect to the first layer that we defined
+model.add(Dense(units=1, activation=&quot;sigmoid&quot;)
+</code></pre></li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><p>Train for little steps and then increase the number of epochs</p>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-39">Artificial Neural Networks</h2>
 
 <h4 id="em-multilayer-perceptrons-em-increasing-the-model-power"><em>Multilayer Perceptrons</em> - Increasing the model power</h4>
 
@@ -1000,7 +1014,7 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-38">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-40">Artificial Neural Networks</h2>
 
 <h4 id="em-multilayer-perceptrons-em-increasing-the-model-power-1"><em>Multilayer Perceptrons</em> - Increasing the model power</h4>
 
@@ -1011,7 +1025,7 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-39">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-41">Artificial Neural Networks</h2>
 
 <h3 id="understanding-the-training">Understanding the training</h3>
 
@@ -1032,7 +1046,7 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-40">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-42">Artificial Neural Networks</h2>
 
 <h3 id="understanding-the-training-1">Understanding the training</h3>
 
@@ -1063,7 +1077,7 @@ plt.show()
 
 </section><section>
 
-<h2 id="artificial-neural-networks-41">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-43">Artificial Neural Networks</h2>
 
 <h3 id="problems-with-the-training-procedure">Problems with the training procedure:</h3>
 
@@ -1088,7 +1102,7 @@ could continue updating;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-42">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-44">Artificial Neural Networks</h2>
 
 <h3 id="optimization-alternatives">Optimization alternatives</h3>
 
@@ -1104,7 +1118,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-43">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-45">Artificial Neural Networks</h2>
 
 <h3 id="optimization-alternatives-1">Optimization alternatives</h3>
 
@@ -1129,7 +1143,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-44">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-46">Artificial Neural Networks</h2>
 
 <h3 id="optimization-alternatives-2">Optimization alternatives</h3>
 
@@ -1160,7 +1174,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-45">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-47">Artificial Neural Networks</h2>
 
 <h3 id="optimization-alternatives-3">Optimization alternatives</h3>
 
@@ -1193,23 +1207,22 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-46">Artificial Neural Networks</h2>
-
-<h3 id="the-bias-1">The Bias</h3>
-
-<p><center><img src="bias1.png" width="600px"/></center></p>
-
-</section><section>
-
-<h2 id="artificial-neural-networks-47">Artificial Neural Networks</h2>
-
-<h3 id="the-bias-2">The Bias</h3>
-
-<p><center><img src="bias2.png" width="600px"/></center></p>
-
-</section><section>
-
 <h2 id="artificial-neural-networks-48">Artificial Neural Networks</h2>
+
+<h3 id="multilayer-perceptron-xor">Multilayer Perceptron - XOR</h3>
+
+<ul>
+<li><p>Try another optimizer:</p>
+
+<pre><code class="language-python">model.compile(loss=&quot;mean_squared_error&quot;, optimizer=&quot;adam&quot;)
+</code></pre></li>
+
+<li><p>My <a href="https://colab.research.google.com/drive/1hpRRtJuC78uPXJE68oOjRaM03LVV_rgo" target="_blank">solution</a></p></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-49">Artificial Neural Networks</h2>
 
 <h3 id="predicting-probabilities">Predicting probabilities</h3>
 
@@ -1221,7 +1234,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-49">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-50">Artificial Neural Networks</h2>
 
 <h3 id="predicting-probabilities-1">Predicting probabilities</h3>
 
@@ -1246,7 +1259,7 @@ of the input example belonging to each of the classes</em> in my problem;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-50">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-51">Artificial Neural Networks</h2>
 
 <h3 id="loss-functions">Loss functions</h3>
 
@@ -1270,7 +1283,7 @@ of the input example belonging to each of the classes</em> in my problem;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-51">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-52">Artificial Neural Networks</h2>
 
 <h3 id="loss-functions-1">Loss functions</h3>
 
@@ -1299,7 +1312,7 @@ of the input example belonging to each of the classes</em> in my problem;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-52">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-53">Artificial Neural Networks</h2>
 
 <h3 id="dealing-with-overfitting">Dealing with overfitting</h3>
 
@@ -1315,7 +1328,7 @@ of the input example belonging to each of the classes</em> in my problem;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-53">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-54">Artificial Neural Networks</h2>
 
 <h3 id="dealing-with-overfitting-1">Dealing with overfitting</h3>
 
@@ -1339,7 +1352,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-54">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-55">Artificial Neural Networks</h2>
 
 <h3 id="larger-example">Larger Example</h3>
 
@@ -1351,7 +1364,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-55">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-56">Artificial Neural Networks</h2>
 
 <h3 id="the-mnist-mlp">The MNIST MLP</h3>
 
@@ -1369,7 +1382,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-56">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-57">Artificial Neural Networks</h2>
 
 <h3 id="the-mnist-mlp-1">The MNIST MLP</h3>
 
@@ -1400,7 +1413,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-57">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-58">Artificial Neural Networks</h2>
 
 <h3 id="the-exercise">The Exercise</h3>
 
@@ -1408,7 +1421,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-58">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-59">Artificial Neural Networks</h2>
 
 <h3 id="the-exercise-1">The Exercise</h3>
 
@@ -1416,7 +1429,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-59">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-60">Artificial Neural Networks</h2>
 
 <h3 id="the-exercise-2">The Exercise</h3>
 
@@ -1427,7 +1440,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-60">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-61">Artificial Neural Networks</h2>
 
 <h3 id="signal-vs-background">Signal VS Background</h3>
 
@@ -1435,7 +1448,7 @@ model.add(Dropout(0.5))
 
 </section><section>
 
-<h2 id="artificial-neural-networks-61">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-62">Artificial Neural Networks</h2>
 
 <h3 id="signal-vs-background-1">Signal VS Background</h3>
 
