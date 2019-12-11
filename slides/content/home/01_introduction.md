@@ -1,24 +1,22 @@
 ## Neural Networks
 
-* Neurons as structural constituents of the brain [Ramón y Cajál, 1911]; 
-* Five to six orders of magnitude slower than silicon logic gates; 
-* In a silicon chip happen in the nanosecond on chip) vs millisecond range (neural events); 
-* A truly staggering number of neurons (nerve cells) with massive interconnections between them;
+* Neurons as structural constituents of the brain <a href="http://hobertlab.org/wp-content/uploads/2014/10/Andres-Barquin_Cajal_2001.pdf" target="_blank">[Ramón y Cajál, 1911]</a>; 
+* Five to six orders of magnitude <em>slower than silicon logic gates</em>; 
+* In a silicon chip happen in the <em>nanosecond (on chip)</em> vs <em>millisecond range (neural events)</em>; 
+* A truly staggering number of neurons (nerve cells) with <em>massive interconnections between them</em>;
 
 ---
-
 ## Neural Networks 
 
 * Receive input from other units and decides whether or not to fire;
-* Approximately 10 billion neurons in the human cortex, and 60 trillion synapses or connections [Shepherd and Koch, 1990];
+* Approximately <em>10 billion neurons</em> in the human cortex, and <em>60 trillion synapses</em> or connections <a href="https://www.researchgate.net/publication/37597256_Biophysics_of_Computation_Neurons_Synapses_and_Membranes" target="_blank">[Shepherd and Koch, 1990]</a>;
 * Energy efficiency of the brain is approximately $10^{−16}$ joules per operation per second against ~ $10^{−8}$ in a computer;
 
 ---
-
 {{<slide background-image="neuron2.png">}}
 ## Neurons
----
 
+---
 ## Neurons
 
 * input signals from its <em>dendrites</em>;
@@ -424,6 +422,15 @@ and no), won't help us to achieve this objective.
 
 ---
 ## Artificial Neural Networks
+### The Bias
+<center><img src="bias1.png" width="600px"/></center>
+
+---
+## Artificial Neural Networks
+### The Bias
+<center><img src="bias2.png" width="600px"/></center>
+---
+## Artificial Neural Networks
 ### Perceptron - What it <em>can't do</em>!
 
 * The <em>XOR</em> function:
@@ -455,25 +462,6 @@ Now, there are 2 hyperplanes, that when put together, can perfectly separate the
 ---
 ## Artificial Neural Networks
 ### Perceptron - Solving the XOR problem
-* Implementing an ANN that can solve the XOR problem:
-  * Add a new layer with a larger number of neurons:
-
-```python
-...
-#Create a layer with two neurons as output
-model.add(Dense(units=2), activation="sigmoid", input_dim=2)
-
-# Connect to the first layer that we defined
-model.add(Dense(units=1, activation="sigmoid")
-```
-
-{{% note %}}
-Train for little steps and then increase the number of epochs
-{{% /note %}}
-
----
-## Artificial Neural Networks
-### Perceptron - Solving the XOR problem
 * The combination of the layers:
 <center><a href="xor3.png" target="_blank"><img src="xor3.png" width="300px"/></a></center>
 
@@ -484,6 +472,25 @@ Train for little steps and then increase the number of epochs
 * Yesterday we saw polynomial transformation of features - in that we saw that
   we changed the shape of the regression line being built;
 
+{{% /note %}}
+
+---
+## Artificial Neural Networks
+### Perceptron - Solving the XOR problem
+* Implementing an ANN that can solve the XOR problem:
+  * Add a new layer with a larger number of neurons:
+
+```python
+...
+#Create a layer with 4 neurons as output
+model.add(Dense(units=4), activation="sigmoid", input_dim=2)
+
+# Connect to the first layer that we defined
+model.add(Dense(units=1, activation="sigmoid")
+```
+
+{{% note %}}
+Train for little steps and then increase the number of epochs
 {{% /note %}}
 
 ---
@@ -607,13 +614,12 @@ Minibatch:
 
 ---
 ## Artificial Neural Networks
-### The Bias
-<center><img src="bias1.png" width="600px"/></center>
-
----
-## Artificial Neural Networks
-### The Bias
-<center><img src="bias2.png" width="600px"/></center>
+### Multilayer Perceptron - XOR
+* Try another optimizer:
+```python
+model.compile(loss="mean_squared_error", optimizer="adam")
+```
+* My <a href="https://colab.research.google.com/drive/1hpRRtJuC78uPXJE68oOjRaM03LVV_rgo" target="_blank">solution</a>
 
 ---
 ## Artificial Neural Networks
