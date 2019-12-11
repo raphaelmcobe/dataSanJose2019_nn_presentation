@@ -429,6 +429,7 @@ and no), won't help us to achieve this objective.
 ## Artificial Neural Networks
 ### The Bias
 <center><img src="bias2.png" width="600px"/></center>
+
 ---
 ## Artificial Neural Networks
 ### Perceptron - What it <em>can't do</em>!
