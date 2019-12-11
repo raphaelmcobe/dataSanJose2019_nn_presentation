@@ -3,15 +3,15 @@
   <head>
 	<meta name="generator" content="Hugo 0.59.1" />
     <meta charset="utf-8">
-<title>reveal-hugo</title>
-<meta name="description" content="A Hugo theme for creating Reveal.js presentations">
+<title>Introduction to Artificial Neural Networks</title>
+<meta name="description" content="Intro to ANN Presentation">
 <meta name="author" content="Raphael Cobe">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="./reveal-js/css/reset.css">
 <link rel="stylesheet" href="./reveal-js/css/reveal.css">
-  <link rel="stylesheet" href="min.css" id="theme"><link rel="stylesheet" href="./highlight-js/mono-blue.min.css"><link rel="stylesheet" href="./css/custom.css" id="custom_css">
+  <link rel="stylesheet" href="./min.css" id="theme"><link rel="stylesheet" href="./highlight-js/mono-blue.min.css"><link rel="stylesheet" href="./css/custom.css" id="custom_css">
     
 
 <style>
@@ -138,6 +138,14 @@
 
 <p><img src="neuron1.png"/></p>
 
+
+
+
+<aside class="notes"><ul>
+<li>three major types of neurons: <em>sensory neurons</em>, <em>motor neurons</em>, and <em>interneurons</em></li>
+</ul>
+</aside>
+
 </section><section>
 
 <h2 id="neurons-2">Neurons</h2>
@@ -216,8 +224,7 @@ sheer complexity of connections between neurons;</li>
 
 <ul>
 <li>Model each part of the neuron and interactions;</li>
-<li><em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based
-on the synaptic strength at that synapse (e.g. $w_0$ );</li>
+<li><em>Interact multiplicatively</em> (e.g. $w_0x_0$) with the dendrites of the other neuron based on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <li>Learn <em>synapses strengths</em>;</li>
 </ul>
 
@@ -297,17 +304,17 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <tbody>
 <tr>
 <td>2,104</td>
-<td>$399,900$</td>
+<td>$\$399,900$</td>
 </tr>
 
 <tr>
 <td>1,600</td>
-<td>$329,900$</td>
+<td>$\$329,900$</td>
 </tr>
 
 <tr>
 <td>2,400</td>
-<td>$369,000$</td>
+<td>$\$369,000$</td>
 </tr>
 </tbody>
 </table>
@@ -507,8 +514,8 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <ul>
 <li>Finding the <em>minimum of a function</em>;</li>
 <li>Look for the best weights values, <em>minimizing the error</em>;</li>
-<li>Takes steps proportional to the negative of the gradient of the function at the current point.</li>
-<li>Gradient is a vector that is tangent of a function and points in the direction of greatest increase of this function.</li>
+<li>Takes steps <em>proportional to the negative of the gradient</em> of the function at the current point.</li>
+<li>Gradient is a vector that is <em>tangent of a function</em> and points in the direction of greatest increase of this function.</li>
 </ul></li>
 </ul>
 
@@ -519,9 +526,9 @@ on the synaptic strength at that synapse (e.g. $w_0$ );</li>
 <h3 id="gradient-descent">Gradient Descent</h3>
 
 <ul>
-<li>In mathematics, gradient is defined as partial derivative for every input variable of function;</li>
-<li>Negative gradient is a vector pointing at the greatest decrease of a function;</li>
-<li>Minimize a function by iteratively moving a little bit in the direction of negative gradient;</li>
+<li>In mathematics, gradient is defined as <em>partial derivative for every input variable</em> of function;</li>
+<li><em>Negative gradient</em> is a vector pointing at the <em>greatest decrease</em> of a function;</li>
+<li><em>Minimize a function</em> by iteratively moving a little bit in the direction of negative gradient;</li>
 </ul>
 
 </section><section>
@@ -683,6 +690,14 @@ model.add(Dense(units=1, input_dim=2))
 </ul></li>
 </ul>
 
+
+
+
+<aside class="notes"><ul>
+<li>Dense means a fully connected layer.</li>
+</ul>
+</aside>
+
 </section><section>
 
 <h2 id="artificial-neural-networks-26">Artificial Neural Networks</h2>
@@ -693,7 +708,8 @@ model.add(Dense(units=1, input_dim=2))
 <li><p>Compile and train the model</p>
 
 <ul>
-<li><p>The compilation creates a computational graph of the training;</p>
+<li><p>The compilation creates a <a
+href="https://medium.com/tebs-lab/deep-neural-networks-as-computational-graphs-867fcaa56c9" target="_blank">computational graph</a> of the training;</p>
 
 <pre><code class="language-python"># Specify the loss function (error) and the optimizer 
 #   (a variation of the gradient descent method)
@@ -705,6 +721,22 @@ model.fit(x=train_data_X, y=train_data_Y)
 </code></pre></li>
 </ul></li>
 </ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>Computational Graphs:
+
+<ul>
+<li>Nodes represent both inputs and operations;</li>
+<li>Even relatively “simple” deep neural networks have hundreds of thousands of nodes and edges;</li>
+<li>Lots of operations can run in parallel;</li>
+<li>Example: $(x*y)+(w*z)$</li>
+<li>Makes it easier to create an auto diferentiation strategy;</li>
+</ul></li>
+</ul>
+</aside>
 
 </section><section>
 
@@ -940,6 +972,18 @@ model.add(Dense(units=1, activation=&quot;sigmoid&quot;)
 <center><a href="xor3.png" target="_blank"><img src="xor3.png" width="300px"/></a></center></li>
 </ul>
 
+
+
+
+<aside class="notes"><ul>
+<li>That is what people mean when they say we don&rsquo;t know how deep neural networks
+work. We know that it is a composition of functions, but the shape of that
+remains a little bit hard to define;</li>
+<li>Yesterday we saw polynomial transformation of features - in that we saw that
+we changed the shape of the regression line being built;</li>
+</ul>
+</aside>
+
 </section><section>
 
 <h2 id="artificial-neural-networks-37">Artificial Neural Networks</h2>
@@ -972,8 +1016,12 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 <h3 id="understanding-the-training">Understanding the training</h3>
 
 <ul>
-<li>Plot the architecture of the network:
-<center><img src="nn_architecture.png" width="350px" /></center></li>
+<li><p>Plot the architecture of the network:</p>
+
+<pre><code class="language-python">tf.keras.utils.plot_model(model, show_shapes=True, show_layer_names=False)
+</code></pre>
+
+<p><center><img src="nn_architecture.png" width="250px" /></center></p></li>
 </ul>
 
 
@@ -989,10 +1037,29 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 <h3 id="understanding-the-training-1">Understanding the training</h3>
 
 <ul>
-<li>Plotting the training progress of the XOR ANN:
-<center><img src="loss_trainning2.png" width="500px" /></center>
-<center>In the case of the XOR. <em>What is wrong with that?</em></center></li>
+<li><p>Plotting the training progress of the XOR ANN:</p>
+
+<pre><code class="language-python">history = model.fit(x=X_data, y=Y_data, epochs=2500, verbose=0)
+import matplotlib.pyplot as plt
+plt.plot(history.history['loss'])
+plt.title('Model Training Progression')
+plt.ylabel('Loss')
+plt.xlabel('Epoch')
+plt.legend(['Loss'], loc='upper left')
+plt.show()
+</code></pre>
+
+<p><center><a href="loss_trainning2.png" target="_blank"><img src="loss_trainning2.png" width="200px" /></a></center></p></li>
 </ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>This is called the <em>learning curve</em>;</li>
+<li>In the case of the XOR. <em>What is wrong with that?</em></li>
+</ul>
+</aside>
 
 </section><section>
 
@@ -1008,6 +1075,16 @@ $$y = f^{(3)}(f^{(2)}(f^{(1)}(x)))$$</p></li>
 <center><a href="saddle.png" target="_blank"><img src="saddle.png" width="300px" /></a></center></li>
 </ul></li>
 </ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>That eventually happens because of a bad optimization function;</li>
+<li>Imagine that you could add momentum to the gradient descent - probably it
+could continue updating;</li>
+</ul>
+</aside>
 
 </section><section>
 
@@ -1130,6 +1207,188 @@ dataset</em>;</li>
 
 <p><center><img src="bias2.png" width="600px"/></center></p>
 
+</section><section>
+
+<h2 id="artificial-neural-networks-48">Artificial Neural Networks</h2>
+
+<h3 id="predicting-probabilities">Predicting probabilities</h3>
+
+<ul>
+<li>Imagine that we have <em>more than 2 classes</em> to output;</li>
+<li>One of the <em>most popular usages</em> for ANN;
+<center><a href="classification_example.jpeg" target="_blank"><img src="classification_example.jpeg" width="300px"/></a></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-49">Artificial Neural Networks</h2>
+
+<h3 id="predicting-probabilities-1">Predicting probabilities</h3>
+
+<ul>
+<li>The <a href="https://en.wikipedia.org/wiki/Softmax_function" target="_blank">Softmax</a> function;</li>
+<li>Takes an array and outputs a probability distribution, i.e., <em>the probability
+of the input example belonging to each of the classes</em> in my problem;</li>
+
+<li><p>One of the activation functions available at <code>Keras</code>:</p>
+
+<pre><code class="language-python">model.add(Dense(2, activation=&quot;softmax&quot;))
+</code></pre></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>Softmax - function that takes as input a vector of K real numbers, and normalizes it into a probability distribution</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-50">Artificial Neural Networks</h2>
+
+<h3 id="loss-functions">Loss functions</h3>
+
+<ul>
+<li>For regression problems
+
+<ul>
+<li>Mean squared error is <em>not always the best one to go</em>;</li>
+<li>What if we have a three classes problem?</li>
+<li>Alternatives: <code>mean_absolute_error</code>, <code>mean_squared_logarithmic_error</code></li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>logarithm means changing scale as the error can grow really fast;</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-51">Artificial Neural Networks</h2>
+
+<h3 id="loss-functions-1">Loss functions</h3>
+
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Cross_entropy" target="_blank">Cross Entropy</a> loss:
+
+<ul>
+<li>Default loss function to use for binary classification problems.</li>
+<li>Measures the <em>performance of a model</em> whose output is a probability value between 0 and 1;</li>
+<li><em>Loss increases</em> as the <em>predicted probability diverges</em> from the actual label;</li>
+<li>A <em>perfect model</em> would have a log loss of 0;</li>
+</ul></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>As the correct predicted probability decreases, however, the log loss increases rapidly:
+
+<ul>
+<li>In case the model has to answer 1, but it does with a very low probability;</li>
+</ul></li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-52">Artificial Neural Networks</h2>
+
+<h3 id="dealing-with-overfitting">Dealing with overfitting</h3>
+
+<ul>
+<li><em>Dropout</em> layers:
+
+<ul>
+<li>Randomly <em>disable</em> some of the neurons during the training passes;</li>
+</ul></li>
+</ul>
+
+<p><center><a href="dropout.gif" target="_blank"><img src="dropout.gif" width="500px"/></a></center></p>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-53">Artificial Neural Networks</h2>
+
+<h3 id="dealing-with-overfitting-1">Dealing with overfitting</h3>
+
+<ul>
+<li><p><em>Dropout</em> layers:</p>
+
+<pre><code class="language-python"># Drop half of the neurons outputs from the previous layer
+model.add(Dropout(0.5))
+</code></pre></li>
+</ul>
+
+
+
+
+<aside class="notes"><ul>
+<li>“drops out” a random set of activations in that layer by setting them to zero;</li>
+<li>forces the network to be redundant;</li>
+<li>the net should be able to provide the right classification for a specific example even if some of the activations are dropped out;</li>
+</ul>
+</aside>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-54">Artificial Neural Networks</h2>
+
+<h3 id="larger-example">Larger Example</h3>
+
+<ul>
+<li>The <a href="http://yann.lecun.com/exdb/mnist/">MNIST</a> dataset: database of handwritten digits;</li>
+<li>Dataset included in Keras;
+<center><a href="mnist.png" target="_blank"><img src="mnist.png" width="500px"/></a></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-55">Artificial Neural Networks</h2>
+
+<h3 id="the-mnist-mlp">The MNIST MLP</h3>
+
+<ul>
+<li>Try to improve the classification results using <a href="https://colab.research.google.com/drive/1AnGJz_R0PJF0d83ye_3y7NPGuX5YipBi" target="_blank">this notebook</a>:</li>
+<li>Things to try:
+
+<ul>
+<li>Increase the number of neurons at the first layer;</li>
+<li>Change the optimizer and the loss function;</li>
+<li>Try <code>categorical_crossentropy</code> and <code>rmsprop</code> optimizer;</li>
+<li>Try adding some extra layers;</li>
+</ul></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-56">Artificial Neural Networks</h2>
+
+<h3 id="the-mnist-mlp-1">The MNIST MLP</h3>
+
+<ul>
+<li>Try to improve the classification results using <a href="https://colab.research.google.com/drive/1AnGJz_R0PJF0d83ye_3y7NPGuX5YipBi" target="_blank">this notebook</a>:</li>
+
+<li><p>Things to try:</p>
+
+<ul>
+<li>Try addind <code>Dropout</code> layers;</li>
+<li>Increase the number of <code>epochs</code>;</li>
+<li>Try to <em>normalize the data</em>!</li>
+</ul></li>
+
+<li><p>What is the best accuracy?</p></li>
+
+<li><p><a href="https://colab.research.google.com/drive/1LnkhSA7XbEWMNdaebOXxsOENr6m-0vpZ" target="_blank">My solution</a>.</p></li>
+</ul>
+
 </section>
 
 
@@ -1141,7 +1400,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-48">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-57">Artificial Neural Networks</h2>
 
 <h3 id="the-exercise">The Exercise</h3>
 
@@ -1149,7 +1408,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-49">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-58">Artificial Neural Networks</h2>
 
 <h3 id="the-exercise-1">The Exercise</h3>
 
@@ -1157,7 +1416,18 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-50">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-59">Artificial Neural Networks</h2>
+
+<h3 id="the-exercise-2">The Exercise</h3>
+
+<ul>
+<li>Quantum Chromodynamics
+<center><a href="qcd.png" target="_blank"><img src="qcd.png" width="500px"/></a></center></li>
+</ul>
+
+</section><section>
+
+<h2 id="artificial-neural-networks-60">Artificial Neural Networks</h2>
 
 <h3 id="signal-vs-background">Signal VS Background</h3>
 
@@ -1165,7 +1435,7 @@ dataset</em>;</li>
 
 </section><section>
 
-<h2 id="artificial-neural-networks-51">Artificial Neural Networks</h2>
+<h2 id="artificial-neural-networks-61">Artificial Neural Networks</h2>
 
 <h3 id="signal-vs-background-1">Signal VS Background</h3>
 
